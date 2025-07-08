@@ -17,12 +17,6 @@ const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
 );
-const EditIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-    <path d="M12 20h9"/>
-    <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19.5 3 21l1.5-4L16.5 3.5z"/>
-  </svg>
-);
 
 // --- MapSelector (placeholder) ---
 const MapSelector = ({ onSelect }: { onSelect: (address: string) => void }) => (
@@ -178,7 +172,15 @@ const CartDrawer = ({
 );
 
 // --- Main Page ---
-const initialCart = [
+interface CartItemType {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+}
+
+const initialCart: CartItemType[] = [
   // Example cart items
   // { id: 1, name: "Salad Bowl", image: "/salad.jpg", price: 120, quantity: 2 },
   // { id: 2, name: "Fruit Juice", image: "/juice.jpg", price: 80, quantity: 1 },
