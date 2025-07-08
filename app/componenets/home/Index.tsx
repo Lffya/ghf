@@ -9,7 +9,7 @@ import TestimonialSection from './TestimonialSection';
 import PartnersSection from './PartnersSection';
 import NewsletterSection from './NewsletterSection';
 import Navbar from './Navbar';
-import Footer from '../footer/Footer';  
+import Footer from '../footer/Footer'; 
 // --- ICONS (Lucide SVGs for demo, replace with lucide-react if available) ---
 const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
