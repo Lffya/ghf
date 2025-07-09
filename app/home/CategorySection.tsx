@@ -1,4 +1,4 @@
-
+"use client";
 import React from 'react';
 import { Coffee, Apple, UtensilsCrossed, Cake } from 'lucide-react';
 
@@ -40,7 +40,7 @@ const CategorySection = () => {
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center space-x-2">
             <span className="text-green-500 text-2xl">🤔</span>
-            <h2 className="text-3xl font-bold text-gray-800">Whats on Your Mind?</h2>
+            <h2 className="text-3xl font-bold text-gray-800">What's on Your Mind?</h2>
           </div>
           <button className="text-green-500 font-medium hover:text-green-600 transition-colors">
             Explore More

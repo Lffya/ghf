@@ -1,5 +1,4 @@
-
-
+"use client";
 import React from 'react';
 import { Star } from 'lucide-react';
 
@@ -49,7 +48,7 @@ const TestimonialSection = () => {
 
               {/* Testimonial Text */}
               <p className="text-gray-600 mb-6 leading-relaxed">
-                &quot;{testimonial.text}&quot;
+                "{testimonial.text}"
               </p>
 
               {/* User Info */}

@@ -1,18 +1,11 @@
 "use client";
 import React, { useRef } from "react";
-import Navbar from "../home/Navbar";
-import Footer from "../footer/Footer";
 const OpenFranchise = () => {
   const fileInputLogo = useRef<HTMLInputElement>(null);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar
-        address="149-B, Chokkalinga Nagar, Rai..."
-        onLocationClick={() => {}}
-        cartCount={0}
-        onCartClick={() => {}}
-      />
+      
       <main className="pt-28 pb-12 px-2 md:px-0 flex justify-center">
         <form className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-6 md:p-12">
           <h2 className="text-center text-3xl font-bold mb-8 text-green-700 tracking-tight">Franchise Information</h2>
@@ -211,7 +204,6 @@ const OpenFranchise = () => {
           </button>
         </form>
       </main>
-      <Footer />
     </div>
   );
 };

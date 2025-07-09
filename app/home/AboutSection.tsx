@@ -1,4 +1,4 @@
-
+"use client";
 import React from 'react';
 import { Leaf } from 'lucide-react';
 
@@ -19,8 +19,8 @@ const AboutSection = () => {
             </h3>
             
             <p className="text-gray-600 leading-relaxed">
-              Greenheap Agro Foods Pvt Ltd, offers Smart, Health, 
-              Heritage and Technology Connect We To Natures Goodness. Our 
+              Greenheap Agro Foods Pvt Ltd, offers 'Smart, Health, 
+              Heritage and Technology Connect We To Nature's Goodness.' Our 
               Mission Is Simple Yet Profound: To Bring You Locally 
               Grown, Nutrient-Rich Food Straight From Our Farms To Your Table.
             </p>
