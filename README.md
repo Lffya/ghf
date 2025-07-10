@@ -41,4 +41,5 @@ npm install tailwind-merge
 npm install @radix-ui/react-slot   
 npm install class-variance-authority
 npm install @radix-ui/react-avatar
-npm install react-leaflet leaflet ```
+npm install react-leaflet leaflet
+ ```
