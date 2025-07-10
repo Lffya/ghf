@@ -119,7 +119,7 @@ export default function HelpSupportPage() {
             </div>
             <div>
               <p className="font-medium">Email Support</p>
-              <p>24/7 - We'll respond within 24 hours</p>
+              <p>24/7 - We will respond within 24 hours</p>
             </div>
           </div>
         </div>

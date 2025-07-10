@@ -437,17 +437,54 @@ export default function ProductDetailPage() {
 
             {/* Action Buttons */}
             <div className="flex gap-4">
-              <Button className="flex-1 bg-green-600 hover:bg-green-700">Add to cart</Button>
+              <Button
+                className="flex-1 bg-green-600 hover:bg-green-700"
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent("add-to-cart", {
+                      detail: {
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        qty: quantity,
+                        image: product.image,
+                      },
+                    })
+                  );
+                }}
+              >
+                Add to cart
+              </Button>
               <Button variant="outline" className="flex items-center gap-2 bg-black text-white hover:bg-gray-800">
                 <Heart className="w-4 h-4" />
                 Add to Wishlist
+              </Button>
+              <Button
+                variant="ghost"
+                className="flex items-center gap-2 border border-green-600 text-green-600 hover:bg-green-50"
+                aria-label="Add to cart"
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent("add-to-cart", {
+                      detail: {
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        qty: quantity,
+                        image: product.image,
+                      },
+                    })
+                  );
+                }}
+              >
+                <Plus className="w-4 h-4" />
               </Button>
             </div>
 
             {/* Description */}
             <div>
               <h3 className="font-semibold mb-2">Description:</h3>
-              <p className="text-gray-600">{product.description}</p>
+              <p className="text-black-600">{product.description}</p>
             </div>
           </div>
         </div>
@@ -458,7 +495,7 @@ export default function ProductDetailPage() {
             <h3 className="font-semibold mb-6">Related Foods</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {relatedProducts.map((relatedProduct) => (
-                <Link key={relatedProduct.id} href={`/products/${relatedProduct.id}`} className="group">
+                <div key={relatedProduct.id} className="group">
                   <div className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                     <div className="relative">
                       <Image
@@ -487,14 +524,31 @@ export default function ProductDetailPage() {
                           <Button size="sm" variant="ghost" className="p-1">
                             <Heart className="w-3 h-3" />
                           </Button>
-                          <Button size="sm" variant="ghost" className="p-1">
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="p-1"
+                            onClick={() => {
+                              window.dispatchEvent(
+                                new CustomEvent("add-to-cart", {
+                                  detail: {
+                                    id: relatedProduct.id,
+                                    name: relatedProduct.name,
+                                    price: relatedProduct.price,
+                                    qty: 1,
+                                    image: relatedProduct.image,
+                                  },
+                                })
+                              );
+                            }}
+                          >
                             <Plus className="w-3 h-3" />
                           </Button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Search, MessageCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function InboxPage() {
   const [activeTab, setActiveTab] = useState("Seller")
@@ -11,8 +11,9 @@ export default function InboxPage() {
   const tabs = ["Seller", "Delivery Man", "Nutrition"]
 
   return (
-    <DashboardLayout>
+    
       <div className="p-8">
+        <DashboardLayout><br />
         <div className="bg-white rounded-lg shadow-sm">
           {/* Header */}
           <div className="p-8 border-b border-gray-200">
@@ -63,7 +64,8 @@ export default function InboxPage() {
             <MessageCircle className="w-7 h-7 text-white" />
           </button>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
+    
   )
 }

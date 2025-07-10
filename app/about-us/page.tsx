@@ -40,12 +40,12 @@ export default function AboutUsPage() {
             <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
               <p className="text-lg leading-relaxed">
                 Welcome To <strong className="text-green-600">Greenheap Agro Foods Pvt Ltd</strong>, Where Health Meets
-                Heritage And Technology Connects You To Nature's Goodness. Our Mission Is Simple Yet Profound: To
+                Heritage And Technology Connects You To Nature Goodness. Our Mission Is Simple Yet Profound: To
                 Nourish Mankind With Organically Grown, Nutrient-Rich Food Straight From Our Farms To Your Table.
               </p>
 
               <p className="leading-relaxed">
-                At Greenheap, We Believe That Eating Healthy Should Be Effortless And Enjoyable. That's Why We've
+                At Greenheap, We Believe That Eating Healthy Should Be Effortless And Enjoyable. That is Why We are
                 Crafted A Unique Experience Through Our <strong>Web And Mobile Applications</strong>, Greenheap Foods,
                 Where You Can Order Meals Tailored To Your Health Goals And Taste Preferences. Whether You Crave A Burst
                 Of Traditional Flavors Or International Cuisines, Our Meals Are Crafted With Love In Kitchens That
@@ -53,7 +53,7 @@ export default function AboutUsPage() {
               </p>
 
               <p className="leading-relaxed">
-                But We Don't Stop At Meals. From Organic Groceries To Wholesome Snacks And Revitalizing Health Drinks,
+                But We Don not Stop At Meals. From Organic Groceries To Wholesome Snacks And Revitalizing Health Drinks,
                 Our Product Range Caters To Every Aspect Of Your Healthy Lifestyle. With Our{" "}
                 <strong>Flexible Weekly And Monthly Subscription Plans</strong>, We Ensure Your Pantry Is Always Stocked
                 With The Best Of Nature.

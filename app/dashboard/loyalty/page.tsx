@@ -1,10 +1,11 @@
 import { Star, TrendingUp } from "lucide-react"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function LoyaltyPage() {
   return (
-    <DashboardLayout>
+    
       <div className="p-8">
+        <DashboardLayout><br />
         {/* Loyalty Points Card */}
         <div className="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-8 text-white mb-8">
           <div className="flex items-center justify-between mb-6">
@@ -43,7 +44,7 @@ export default function LoyaltyPage() {
             <h3 className="text-xl font-semibold text-gray-600">No Data Found</h3>
           </div>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
   )
 }

@@ -1,11 +1,14 @@
+"use client"
+
 import { Edit, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function ProfilePage() {
   return (
-    <DashboardLayout>
+    
       <div className="p-8">
+        <DashboardLayout><br />
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg p-6 text-center shadow-sm">
@@ -82,8 +85,9 @@ export default function ProfilePage() {
             <p className="text-gray-600">Please add your address for better experience!</p>
           </div>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
+    
   )
 }
 

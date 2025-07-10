@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Package } from "lucide-react"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function OrdersPage() {
   const [activeTab, setActiveTab] = useState("Ongoing")
@@ -10,8 +10,8 @@ export default function OrdersPage() {
   const tabs = ["Ongoing", "Previous", "Subscription"]
 
   return (
-    <DashboardLayout>
       <div className="p-8">
+        <DashboardLayout><br />
         <div className="bg-white rounded-lg shadow-sm">
           {/* Tabs */}
           <div className="border-b border-gray-200">
@@ -42,7 +42,7 @@ export default function OrdersPage() {
             </div>
           </div>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
   )
 }

@@ -1,10 +1,11 @@
 import { Search } from "lucide-react"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function CouponsPage() {
   return (
-    <DashboardLayout>
+    
       <div className="p-8">
+        <DashboardLayout>
         <div className="bg-white rounded-lg shadow-sm p-8">
           <h1 className="text-2xl font-bold text-gray-800 mb-8">My Coupons</h1>
 
@@ -15,7 +16,8 @@ export default function CouponsPage() {
             <h3 className="text-xl font-semibold text-gray-600">No Coupon Found</h3>
           </div>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
+    
   )
 }

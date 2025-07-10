@@ -73,8 +73,8 @@ const Footer = () => {
           <div className="font-bold text-lg mb-2 border-b-2 border-lime-500 w-fit pb-1">Other</div>
           <ul className="space-y-2 text-gray-200">
             <li><a href="/privacy-policy" className="hover:text-[#b4e549]">Privacy Policy</a></li>
-            <li><a href="/terms-and-conditions" className="hover:text-[#b4e549]">Term & Conditions</a></li>
-            <li><a href="/join-our-team" className="hover:text-[#b4e549]">Join Our Team</a></li>
+            <li><a href="/terms-conditions" className="hover:text-[#b4e549]">Term & Conditions</a></li>
+            <li><a href="/join-our-team" className="hover:text-[#b4e549]" target="_blank" rel="noopener noreferrer">Join Our Team</a></li>
           </ul>
         </div>
         {/* Contact */}

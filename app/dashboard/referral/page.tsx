@@ -1,11 +1,11 @@
 import { Copy, Share2, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function ReferralPage() {
   return (
-    <DashboardLayout>
       <div className="p-8">
+        <DashboardLayout><br />
         <div className="bg-white rounded-lg shadow-sm p-8">
           {/* Referral Illustration */}
           <div className="text-center mb-8">
@@ -70,7 +70,7 @@ export default function ReferralPage() {
             </div>
           </div>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
   )
 }

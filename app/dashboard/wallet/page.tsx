@@ -1,11 +1,11 @@
 import { Plus, ChevronDown, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import DashboardLayout from "@/app/components/DashboardLayout"
+import DashboardLayout from "@/components/DashboardLayout"
 
 export default function WalletPage() {
   return (
-    <DashboardLayout>
       <div className="p-8">
+        <DashboardLayout><br />
         <h1 className="text-2xl font-bold text-gray-800 mb-8">My Wallet</h1>
 
         {/* Wallet Card */}
@@ -43,7 +43,7 @@ export default function WalletPage() {
             <p className="text-gray-500 mt-2">Your wallet transactions will appear here</p>
           </div>
         </div>
+        </DashboardLayout>
       </div>
-    </DashboardLayout>
   )
 }
