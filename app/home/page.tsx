@@ -8,7 +8,7 @@ import DeliverySection from './DeliverySection';
 import TestimonialSection from './TestimonialSection';
 import PartnersSection from './PartnersSection';
 import NewsletterSection from './NewsletterSection';
-import Navbar from '../navbar/page';
+
 
 const HomePage = () => {
   return (

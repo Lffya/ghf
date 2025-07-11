@@ -1,5 +1,7 @@
 "use client";
-import React, { useRef } from "react";
+import Image from "next/image";
+import { useRef } from "react";
+
 const OpenFranchise = () => {
   const fileInputLogo = useRef<HTMLInputElement>(null);
 
@@ -157,7 +159,7 @@ const OpenFranchise = () => {
             <input className="border rounded-lg px-4 py-2 text-base text-black focus:border-green-500 focus:ring-2 focus:ring-green-100 transition" placeholder="First Name" />
             <input className="border rounded-lg px-4 py-2 text-base text-black focus:border-green-500 focus:ring-2 focus:ring-green-100 transition" placeholder="Last Name" />
             <div className="flex items-center border rounded-lg px-4 py-2 text-base text-black focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-100 transition">
-              <img src="https://flagcdn.com/in.svg" alt="IN" className="w-5 h-5 mr-1 rounded" />
+              <Image src="https://flagcdn.com/in.svg" alt="IN" width={20} height={20} className="w-5 h-5 mr-1 rounded" />
               <span className="text-gray-500 mr-1">+91</span>
               <input className="flex-1 outline-none bg-transparent text-black" placeholder="Phone" />
             </div>

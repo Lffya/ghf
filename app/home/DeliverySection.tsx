@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
 import { Truck } from 'lucide-react';
+import Image from "next/image";
 
 const DeliverySection = () => {
   return (
@@ -26,14 +26,18 @@ const DeliverySection = () => {
           {/* Right Images */}
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="relative">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?auto=format&fit=crop&w=400&q=80" 
                 alt="Healthy meal 1" 
+                width={400}
+                height={400}
                 className="w-48 h-48 object-cover rounded-2xl shadow-lg"
               />
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=400&q=80" 
                 alt="Healthy meal 2" 
+                width={400}
+                height={400}
                 className="w-48 h-48 object-cover rounded-2xl shadow-lg absolute -top-4 -right-4 border-4 border-white"
               />
             </div>

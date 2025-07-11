@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const Footer = () => {
@@ -25,16 +25,16 @@ const Footer = () => {
         {/* Left: Logo & App Links */}
         <div className="flex-1 min-w-[220px] flex flex-col gap-4">
           <div className="flex flex-col items-start gap-2">
-            <img src="/logo.png" alt="Healthy Foods Logo" className="h-14 w-14" />
+            <Image src="/logo.png" alt="Healthy Foods Logo" width={56} height={56} className="h-14 w-14" />
             <span className="text-[#b4e549] font-semibold text-lg">Healthy Foods</span>
           </div>
           <div className="text-gray-200 text-base mt-2 mb-2">is Best Delivery Service Near You</div>
           <div className="flex gap-3 mb-2">
             <a href="#" className="block">
-              <img src="/google-play-badge.png" alt="Google Play" className="h-12 rounded" />
+              <Image src="/google-play-badge.png" alt="Google Play" width={96} height={48} className="h-12 rounded" />
             </a>
             <a href="#" className="block">
-              <img src="/app-store-badge.png" alt="App Store" className="h-12 rounded" />
+              <Image src="/app-store-badge.png" alt="App Store" width={96} height={48} className="h-12 rounded" />
             </a>
           </div>
           <div className="flex gap-3 mt-2">
