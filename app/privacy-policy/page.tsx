@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Ordering and Customization</h2>
               <p>
-                With subscription plans, you don't need to place orders daily. Orders can be altered for the next day or
+                With subscription plans, you dont need to place orders daily. Orders can be altered for the next day or
                 skipped by contacting our customer care team, who will assist you in updating your preferences.
               </p>
             </section>

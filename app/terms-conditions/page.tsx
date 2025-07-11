@@ -24,7 +24,7 @@ export default function TermsConditionsPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">1.2 Raw Material and Supplier Sourcing</h3>
                   <p>
-                    Partners must procure raw materials from authorized suppliers who meet Greenheap's quality
+                    Partners must procure raw materials from authorized suppliers who meet Greenheaps quality
                     standards. Any outsourcing of raw material supply must receive prior written approval from
                     Greenheap.
                   </p>
@@ -52,7 +52,7 @@ export default function TermsConditionsPage() {
                   <h3 className="text-lg font-semibold text-gray-800">1.5 Product Delivery and Availability</h3>
                   <p>
                     All products must be available for at least 7 days and delivered on time to the designated Greenheap
-                    hub or distribution center. Partners must ensure that products meet Greenheap's specifications and
+                    hub or distribution center. Partners must ensure that products meet Greenheaps specifications and
                     are delivered within the agreed-upon time frame.
                   </p>
                 </div>
@@ -66,7 +66,7 @@ export default function TermsConditionsPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">2.1 Product Specifications and Ingredients</h3>
                   <p>
-                    Manufacturers are required to produce products strictly as per Greenheap's specifications. No
+                    Manufacturers are required to produce products strictly as per Greenheaps specifications. No
                     changes to the ingredients or formulations are allowed without prior written approval from
                     Greenheap.
                   </p>
@@ -76,7 +76,7 @@ export default function TermsConditionsPage() {
                   <h3 className="text-lg font-semibold text-gray-800">2.2 Product Delivery and Integrity</h3>
                   <p>
                     Manufacturers must ensure that the products are delivered as-is without any alterations. If the
-                    products are altered or fail to meet Greenheap's standards, the contract will be immediately
+                    products are altered or fail to meet Greenheaps standards, the contract will be immediately
                     canceled without prior notice, and the relationship may be terminated.
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export default function TermsConditionsPage() {
                   <h3 className="text-lg font-semibold text-gray-800">2.4 Product Quality Assurance</h3>
                   <p>
                     The manufacturer is responsible for maintaining the quality and consistency of the products. Any
-                    defects or non-compliance with Greenheap's quality standards will result in contract termination.
+                    defects or non-compliance with Greenheaps quality standards will result in contract termination.
                   </p>
                 </div>
 
@@ -115,8 +115,8 @@ export default function TermsConditionsPage() {
                   <h3 className="text-lg font-semibold text-gray-800">3.1 Brand Usage</h3>
                   <p>
                     Franchisees are granted the right to use the Greenheap brand, logo, and trademark, but must adhere
-                    to Greenheap's established standards and branding guidelines. The use of the brand in marketing,
-                    advertising, and sales must align with Greenheap's approved methods.
+                    to Greenheaps established standards and branding guidelines. The use of the brand in marketing,
+                    advertising, and sales must align with Greenheaps approved methods.
                   </p>
                 </div>
 
@@ -140,7 +140,7 @@ export default function TermsConditionsPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">3.4 On-Time Delivery to Hub</h3>
                   <p>
-                    Franchisees must ensure timely delivery of products to Greenheap's central hub, or as per the agreed
+                    Franchisees must ensure timely delivery of products to Greenheaps central hub, or as per the agreed
                     distribution model. Failure to meet delivery deadlines may result in penalties or termination of the
                     franchise agreement.
                   </p>
@@ -165,7 +165,7 @@ export default function TermsConditionsPage() {
                   <h3 className="text-lg font-semibold text-gray-800">4.1 Sales and Marketing</h3>
                   <p>
                     Agents are responsible for the promotion, sales, and distribution of Greenheap products within their
-                    assigned region. Agents must conduct their activities in compliance with Greenheap's marketing
+                    assigned region. Agents must conduct their activities in compliance with Greenheaps marketing
                     standards and are prohibited from engaging in any misleading or false advertising.
                   </p>
                 </div>
@@ -231,7 +231,7 @@ export default function TermsConditionsPage() {
                   <h3 className="text-lg font-semibold text-gray-800">5.2 Post-Termination Obligations</h3>
                   <p>
                     Upon termination of the agreement, all outstanding obligations, including payments, deliveries, and
-                    stock returns, must be settled promptly. Partners must cease all use of Greenheap's trademarks,
+                    stock returns, must be settled promptly. Partners must cease all use of Greenheaps trademarks,
                     branding, and intellectual property.
                   </p>
                 </div>
@@ -270,7 +270,7 @@ export default function TermsConditionsPage() {
                   <p>
                     Any disputes arising out of or in connection with this Agreement shall be resolved through
                     arbitration, under the rules of the relevant governing authority. In case of legal disputes, the
-                    jurisdiction shall be the courts located in [Greenheap's main office location].
+                    jurisdiction shall be the courts located in [Greenheaps main office location].
                   </p>
                 </div>
               </div>
