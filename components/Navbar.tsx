@@ -112,8 +112,8 @@ const SignupModal = ({ open, onClose, onLogin }: { open: boolean; onClose: () =>
   if (!open) return null;
   return (
     <>
-      <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center px-2">
-        <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-4 md:p-8 mx-auto">
+      <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center px-2 overflow-y-auto">
+        <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-4 md:p-8 mx-auto max-h-screen my-8 flex flex-col justify-center">
           <button
             className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl"
             onClick={onClose}
@@ -374,7 +374,7 @@ const ProfileDropdown = ({ onLogout }: { onLogout: () => void }) => {
       </button>
       {open && (
         <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg py-2 z-50 border">
-          <a href="#" className="block px-4 py-2 text-sm text-black hover:bg-green-50">My Profile</a>
+          <a href="/dashboard/profile" className="block px-4 py-2 text-sm text-black hover:bg-green-50">My Profile</a>
           <a href="#" className="block px-4 py-2 text-sm text-black hover:bg-green-50">Settings</a>
           <button
             className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
@@ -404,120 +404,160 @@ const Navbar = ({
 }) => {
   const [signupOpen, setSignupOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur shadow transition-all duration-300"
-      style={{
-        boxShadow: '0 2px 16px 0 rgba(34,197,94,0.08)',
-        transition: 'box-shadow 0.2s',
-      }}
-    >
-      <div className="max-w-screen-2xl mx-auto flex items-center justify-between px-4 md:px-12 py-2">
-        {/* Left: Logo + Brand + Location */}
-        <div className="flex items-center gap-6 min-w-[260px]">
-          <div className="flex flex-col items-center">
-            <Image src="/logo.png" alt="Healthy Foods" width={56} height={56} className="h-14 mb-2" />
-            <span className="text-green-700 font-semibold text-base">Healthy Foods</span>
+    <>
+      <nav
+        className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur shadow transition-all duration-300"
+        style={{
+          boxShadow: '0 2px 16px 0 rgba(34,197,94,0.08)',
+          transition: 'box-shadow 0.2s',
+        }}
+      >
+        <div className="max-w-screen-2xl mx-auto flex items-center justify-between px-4 md:px-12 py-2">
+          {/* Left: Logo + Brand + Location */}
+          <div className="flex items-center gap-3 min-w-[180px]">
+            <div className="flex flex-col items-center">
+              <Image src="/logo.png" alt="Healthy Foods" width={56} height={56} className="h-14 mb-2" />
+              <span className="text-green-700 font-semibold text-base">Healthy Foods</span>
+            </div>
+            <button
+              className="hidden md:flex items-center gap-1 px-2 py-1 rounded-lg bg-gray-100 hover:bg-green-50 transition border border-gray-200 shadow-sm"
+              onClick={onLocationClick}
+            >
+              <LocationIcon className="w-5 h-5 text-green-600" />
+              <span className="text-xs md:text-sm font-medium text-black truncate max-w-[120px] md:max-w-[180px]">{address}</span>
+              <svg className="w-4 h-4 text-black ml-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 20 20">
+                <path d="M6 8l4 4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            {/* Hamburger for mobile */}
+            <button
+              className="md:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-200"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <svg className="w-7 h-7 text-green-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
+              </svg>
+            </button>
           </div>
-          <button
-            className="flex items-center gap-1 px-2 py-1 rounded-lg bg-gray-100 hover:bg-green-50 transition border border-gray-200 shadow-sm"
-            onClick={onLocationClick}
-          >
-            <LocationIcon className="w-5 h-5 text-green-600" />
-            <span className="text-xs md:text-sm font-medium text-black truncate max-w-[120px] md:max-w-[180px]">{address}</span>
-            <svg className="w-4 h-4 text-black ml-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 20 20">
-              <path d="M6 8l4 4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        {/* Center: Navigation Links */}
-        <div className="flex-1 flex justify-center">
-          <ul className="flex gap-8 items-center font-semibold text-base md:text-lg">
-            <li>
-              <Link href="/home" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/healthy-eats" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
-                Healthy Eats
-              </Link>
-            </li>
-            <li>
-              <Link href="/products" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link href="/about-us" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <button onClick={onBmiClick} className="flex items-center gap-1 font-bold text-green-600 hover:underline transition bg-transparent border-none outline-none cursor-pointer">
-                <span>
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="14" fill="#E0F2FE" />
-                    <path d="M7 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#22C55E" strokeWidth="2" />
-                    <rect x="11" y="11" width="6" height="6" rx="3" fill="#FACC15" />
+          {/* Center: Navigation Links */}
+          <div className="flex-1 flex justify-center">
+            <ul className="hidden md:flex gap-8 items-center font-semibold text-base md:text-lg">
+              <li>
+                <Link href="/home" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/healthy-eats" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
+                  Healthy Eats
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link href="/about-us" className="hover:text-green-600 text-black transition duration-150 hover:scale-105">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <button onClick={onBmiClick} className="flex items-center gap-1 font-bold text-green-600 hover:underline transition bg-transparent border-none outline-none cursor-pointer">
+                  <span>
+                    <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+                      <circle cx="14" cy="14" r="14" fill="#E0F2FE" />
+                      <path d="M7 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#22C55E" strokeWidth="2" />
+                      <rect x="11" y="11" width="6" height="6" rx="3" fill="#FACC15" />
+                    </svg>
+                  </span>
+                  <span className="text-green-700">BMI</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          {/* Right: Auth and Cart */}
+          <div className="flex items-center gap-4 min-w-[120px] justify-end">
+            {!loggedIn ? (
+              <>
+                <button
+                  className="flex items-center gap-2 text-base font-semibold text-black hover:text-green-600 transition"
+                  onClick={() => setSignupOpen(true)}
+                >
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <circle cx="12" cy="7" r="4"/>
+                    <path d="M5.5 21a7.5 7.5 0 0113 0"/>
                   </svg>
-                </span>
-                <span className="text-green-700">BMI</span>
-              </button>
-            </li>
-          </ul>
+                  <span className="hidden md:inline">Sign In</span>
+                </button>
+                <button
+                  className="flex items-center gap-2 text-base font-semibold text-black hover:text-green-600 transition border border-green-600 px-3 py-1 rounded"
+                  onClick={() => setSignupOpen(true)}
+                >
+                  <span className="hidden md:inline">Sign Up</span>
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="hover:text-green-700 transition" aria-label="Notifications">
+                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9"/>
+                  </svg>
+                </button>
+                <button className="hover:text-green-700 transition" aria-label="Wishlist">
+                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.24 3 12.91 4.06 13.44 5.68C13.97 4.06 15.64 3 17.38 3C20.38 3 22.88 5.5 22.88 8.5C22.88 13.5 15 21 15 21H12Z"/>
+                  </svg>
+                </button>
+                <ProfileDropdown onLogout={() => setLoggedIn(false)} />
+              </>
+            )}
+            <button
+              className="relative flex items-center text-base font-semibold text-black hover:text-green-600 transition"
+              onClick={onCartClick}
+            >
+              <CartIcon className="w-7 h-7" />
+              <span className="absolute -top-2 -right-3 bg-green-500 text-white text-xs rounded-full px-2 py-0.5 font-bold">
+                {cartCount}
+              </span>
+              <span className="ml-2 hidden md:inline">Cart</span>
+            </button>
+          </div>
         </div>
-        {/* Right: Auth and Cart */}
-        <div className="flex items-center gap-6 min-w-[200px] justify-end">
-          {!loggedIn ? (
-            <>
+        {/* Mobile menu drawer */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-[100] bg-black/40 flex">
+            <div className="w-64 max-w-[80vw] bg-white h-full shadow-2xl p-6 flex flex-col gap-6 animate-slideInLeft">
               <button
-                className="flex items-center gap-2 text-base font-semibold text-black hover:text-green-600 transition"
-                onClick={() => setSignupOpen(true)}
+                className="self-end mb-4 text-2xl text-gray-400 hover:text-red-500"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
               >
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <circle cx="12" cy="7" r="4"/>
-                  <path d="M5.5 21a7.5 7.5 0 0113 0"/>
-                </svg>
-                <span className="hidden md:inline">Sign In</span>
+                &times;
               </button>
               <button
-                className="flex items-center gap-2 text-base font-semibold text-black hover:text-green-600 transition border border-green-600 px-3 py-1 rounded"
-                onClick={() => setSignupOpen(true)}
+                className="flex items-center gap-2 text-base font-semibold text-black hover:text-green-600 transition md:hidden"
+                onClick={onLocationClick}
               >
-                <span className="hidden md:inline">Sign Up</span>
+                <LocationIcon className="w-5 h-5 text-green-600" />
+                <span className="text-xs font-medium text-black truncate max-w-[120px]">{address}</span>
               </button>
-            </>
-          ) : (
-            <>
-              <button className="hover:text-green-700 transition" aria-label="Notifications">
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9"/>
-                </svg>
-              </button>
-              <button className="hover:text-green-700 transition" aria-label="Wishlist">
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.24 3 12.91 4.06 13.44 5.68C13.97 4.06 15.64 3 17.38 3C20.38 3 22.88 5.5 22.88 8.5C22.88 13.5 15 21 15 21H12Z"/>
-                </svg>
-              </button>
-              <ProfileDropdown onLogout={() => setLoggedIn(false)} />
-            </>
-          )}
-          <button
-            className="relative flex items-center text-base font-semibold text-black hover:text-green-600 transition"
-            onClick={onCartClick}
-          >
-            <CartIcon className="w-7 h-7" />
-            <span className="absolute -top-2 -right-3 bg-green-500 text-white text-xs rounded-full px-2 py-0.5 font-bold">
-              {cartCount}
-            </span>
-            <span className="ml-2 hidden md:inline">Cart</span>
-          </button>
-        </div>
-      </div>
+              <Link href="/home" className="py-2 text-lg font-semibold text-black hover:text-green-600" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+              <Link href="/healthy-eats" className="py-2 text-lg font-semibold text-black hover:text-green-600" onClick={() => setMobileMenuOpen(false)}>Healthy Eats</Link>
+              <Link href="/products" className="py-2 text-lg font-semibold text-black hover:text-green-600" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+              <Link href="/about-us" className="py-2 text-lg font-semibold text-black hover:text-green-600" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
+              <button onClick={() => { onBmiClick(); setMobileMenuOpen(false); }} className="py-2 text-lg font-bold text-green-700 hover:underline">BMI</button>
+            </div>
+            <div className="flex-1" onClick={() => setMobileMenuOpen(false)} />
+          </div>
+        )}
+      </nav>
       <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} onLogin={() => setLoggedIn(true)} />
-    </nav>
+    </>
   );
 };
 
