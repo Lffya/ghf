@@ -24,7 +24,6 @@ const AboutSection = () => {
               Mission Is Simple Yet Profound: To Bring You Locally 
               Grown, Nutrient-Rich Food Straight From Our Farms To Your Table.
             </p>
-            
             <p className="text-gray-600 leading-relaxed">
               At Greenheap... we believe that healthy eating should be accessible, 
               convenient, and delicious. Our commitment to sustainable farming 

@@ -45,7 +45,6 @@ const TopRatedSection = () => {
             <span className="text-green-500 text-2xl">🌟</span>
             <h2 className="text-3xl font-bold text-gray-800">Top-Rated Foods</h2>
           </div>
-          
           {/* Filter Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <button className="px-4 py-2 bg-green-500 text-white rounded-full text-sm font-medium">
@@ -68,7 +67,6 @@ const TopRatedSection = () => {
             </button>
           </div>
         </div>
-
         {/* Food Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {foods.map((food) => (
@@ -97,7 +95,6 @@ const TopRatedSection = () => {
                   </div>
                 )}
               </div>
-
               {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
@@ -107,7 +104,6 @@ const TopRatedSection = () => {
                     <span className="text-sm font-medium">{food.rating}</span>
                   </div>
                 </div>
-
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <span className="text-xl font-bold text-green-600">₹{food.price.toFixed(2)}</span>

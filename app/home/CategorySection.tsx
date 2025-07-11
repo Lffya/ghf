@@ -49,23 +49,21 @@ const CategorySection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-90`}></div>
-                <Image 
-                  src={category.image} 
-                  alt={category.title}
-                  width={300}
-                  height={192}
-                  className="w-full h-48 object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                  <category.icon size={32} className="mb-2 opacity-80" />
-                  <h3 className="text-xl font-bold mb-1">{category.title}</h3>
-                  <p className="text-sm opacity-90">{category.subtitle}</p>
-                </div>
-              </div>
+            <div
+              key={index}
+              className={`bg-gradient-to-br ${category.color} rounded-2xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-300`}
+            >
+              <category.icon size={36} className="mb-4 text-white" />
+              <h3 className="text-lg font-semibold text-white mb-1">{category.title}</h3>
+              <p className="text-white text-xs mb-2">{category.subtitle}</p>
+              <Image
+                src={category.image}
+                alt={category.title}
+                width={300}
+                height={180}
+                className="rounded-xl w-full h-28 object-cover"
+                priority
+              />
             </div>
           ))}
         </div>

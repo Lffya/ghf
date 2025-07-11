@@ -11,7 +11,6 @@ import TopRatedSection from './TopRatedSection';
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-white">
-      
       <main>
         <HeroSection />
         <AboutSection />
@@ -22,7 +21,6 @@ const HomePage = () => {
         <PartnersSection />
         <NewsletterSection />
       </main>
-      
     </div>
   );
 };

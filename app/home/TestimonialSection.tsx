@@ -53,12 +53,12 @@ const TestimonialSection = () => {
 
               {/* User Info */}
               <div className="flex items-center space-x-3">
-                <Image 
-                  src={testimonial.avatar} 
+                <Image
+                  src={testimonial.avatar}
                   alt={testimonial.name}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover"
+                  width={100}
+                  height={100}
+                  className="w-16 h-16 rounded-full object-cover border-2 border-green-500 mx-auto mb-4"
                   priority
                 />
                 <div>
