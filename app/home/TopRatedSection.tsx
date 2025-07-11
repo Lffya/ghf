@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
-import { Star, Heart, ShoppingCart } from 'lucide-react';
+import { Heart, ShoppingCart, Star } from 'lucide-react';
+import Image from "next/image";
 
 const TopRatedSection = () => {
   const foods = [
@@ -75,9 +75,11 @@ const TopRatedSection = () => {
             <div key={food.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
               {/* Image Container */}
               <div className="relative overflow-hidden">
-                <img 
+                <Image 
                   src={food.image} 
                   alt={food.name}
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {food.discount > 0 && (

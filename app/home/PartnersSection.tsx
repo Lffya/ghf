@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import Image from "next/image";
 
 const PartnersSection = () => {
   const partners = [
@@ -34,9 +34,11 @@ const PartnersSection = () => {
             <div key={index} className="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
               <div className="text-center">
                 <div className="w-20 h-20 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-md">
-                  <img 
+                  <Image 
                     src={partner.logo} 
                     alt={partner.name}
+                    width={48}
+                    height={48}
                     className="w-12 h-12 object-contain"
                   />
                 </div>

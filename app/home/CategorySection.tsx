@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
-import { Coffee, Apple, UtensilsCrossed, Cake } from 'lucide-react';
+import { Apple, Cake, Coffee, UtensilsCrossed } from 'lucide-react';
+import Image from "next/image";
 
 const CategorySection = () => {
   const categories = [
@@ -40,7 +40,7 @@ const CategorySection = () => {
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center space-x-2">
             <span className="text-green-500 text-2xl">🤔</span>
-            <h2 className="text-3xl font-bold text-gray-800">What's on Your Mind?</h2>
+            <h2 className="text-3xl font-bold text-gray-800">What&apos;s on Your Mind?</h2>
           </div>
           <button className="text-green-500 font-medium hover:text-green-600 transition-colors">
             Explore More
@@ -52,9 +52,11 @@ const CategorySection = () => {
             <div key={index} className="group cursor-pointer">
               <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                 <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-90`}></div>
-                <img 
+                <Image 
                   src={category.image} 
                   alt={category.title}
+                  width={300}
+                  height={192}
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">

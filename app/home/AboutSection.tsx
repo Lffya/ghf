@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
 import { Leaf } from 'lucide-react';
+import Image from "next/image";
 
 const AboutSection = () => {
   return (
@@ -19,14 +19,14 @@ const AboutSection = () => {
             </h3>
             
             <p className="text-gray-600 leading-relaxed">
-              Greenheap Agro Foods Pvt Ltd, offers 'Smart, Health, 
-              Heritage and Technology Connect We To Nature's Goodness.' Our 
+              Greenheap Agro Foods Pvt Ltd, offers &apos;Smart, Health, 
+              Heritage and Technology Connect We To Nature&apos;s Goodness.&apos; Our 
               Mission Is Simple Yet Profound: To Bring You Locally 
               Grown, Nutrient-Rich Food Straight From Our Farms To Your Table.
             </p>
             
             <p className="text-gray-600 leading-relaxed">
-              At Greenhe... we believe that healthy eating should be accessible, 
+              At Greenheap, we believe that healthy eating should be accessible, 
               convenient, and delicious. Our commitment to sustainable farming 
               practices ensures that every product meets the highest standards 
               of quality and nutrition.
@@ -40,20 +40,26 @@ const AboutSection = () => {
           {/* Right Content - Images */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=500&q=80" 
                 alt="Fresh produce" 
+                width={500}
+                height={256}
                 className="rounded-2xl shadow-lg w-full h-64 object-cover"
               />
               <div className="space-y-4">
-                <img 
+                <Image 
                   src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?auto=format&fit=crop&w=500&q=80" 
                   alt="Healthy cooking" 
+                  width={500}
+                  height={128}
                   className="rounded-2xl shadow-lg w-full h-32 object-cover"
                 />
-                <img 
+                <Image 
                   src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80" 
                   alt="Fresh vegetables" 
+                  width={500}
+                  height={112}
                   className="rounded-2xl shadow-lg w-full h-28 object-cover"
                 />
               </div>

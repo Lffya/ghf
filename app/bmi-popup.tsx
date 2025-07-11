@@ -1,12 +1,7 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const bmiQuestions = [
-	{ label: "How old are you?", name: "age", type: "number", required: true },
-	{ label: "Height", name: "height", type: "number", required: true, placeholder: "cm" },
-	{ label: "Weight", name: "weight", type: "number", required: true, placeholder: "kg" },
-];
 
 const activityLevels = [
 	"No Exercise (Or Very Little)",
@@ -120,9 +115,11 @@ export default function BMIPopup({
 								</div>
 								<form className="space-y-4" onSubmit={handleCalculate}>
 									<div className="flex flex-col items-center mb-4">
-										<img
+										<Image
 											src="/bmi-logo.png"
 											alt="BMI"
+											width={64}
+											height={64}
 											className="h-16 mb-2"
 										/>
 										<div className="flex gap-4">
@@ -138,9 +135,11 @@ export default function BMIPopup({
 													onClick={() => setGender(g.value)}
 													aria-label={g.value}
 												>
-													<img
+													<Image
 														src={g.icon}
 														alt={g.value}
+														width={40}
+														height={40}
 														className="w-10 h-10"
 													/>
 												</button>
@@ -306,9 +305,11 @@ export default function BMIPopup({
 							{/* Right: Pyramid Image */}
 							<div className="hidden md:flex flex-col items-center justify-center bg-green-600 p-8 min-w-[320px]">
 								<div className="rounded-xl bg-white p-2">
-									<img
+									<Image
 										src={pyramidImg}
 										alt="Healthy Eating Pyramid"
+										width={256}
+										height={256}
 										className="w-64 h-64 object-contain"
 									/>
 								</div>
