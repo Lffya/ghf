@@ -10,6 +10,7 @@ import {
   Menu,
   Package,
   Settings,
+  Tag,
   User,
   Users,
   X
@@ -17,17 +18,17 @@ import {
 import React, { useState } from 'react';
 import AdminDashboard from './admindashboard/page';
 import BMIRecordsDashboard from './BMI-record/page';
+import DeliveredRecord from './deliveredrecord/page';
+import FranchiseVerification from './franchiseverification/franchiseverification';
 import ManageFranchise from './manage-franchise/page';
 import ManageHealthyEat from './manage-healthy-eat/page';
+import ManageOffers from './manage-offers/page'; // Assuming you have a ManageOffers component
 import ManageProduct from './manage-product/page';
 import ManageUser from './manage-users/page';
+import ManageOrders from './manageorder/page';
 import Notification from './notifications/page';
-import Support from './support/page';
-import DeliveredRecord from './deliveredrecord/page';
 import PaymentsPage from './payments/page';
-import FranchiseVerification from './franchiseverification/franchiseverification';
-import ManageOrders from './manageorder/page';  
-import ManageOffers from './manage-offers/page'; // Assuming you have a ManageOffers component
+import Support from './support/page';
 // Mock components for the admin modules
 
 
@@ -51,79 +52,79 @@ const AdminPanel: React.FC = () => {
     {
       id: 'dashboard',
       label: 'Dashboard',
-      icon: <Home className="w-5 h-5" />,
+      icon: <Home className="w-5 h-5" />, // Home icon for dashboard
       component: <AdminDashboard />
     },
     {
       id: 'support',
       label: 'Support',
-      icon: <Headphones className="w-5 h-5" />,
+      icon: <Headphones className="w-5 h-5" />, // Headphones for support
       component: <Support />
     },
     {
       id: 'notifications',
       label: 'Notifications',
-      icon: <Bell className="w-5 h-5" />,
+      icon: <Bell className="w-5 h-5" />, // Bell for notifications
       component: <Notification />
     },
     {
       id: 'manage-orders',
       label: 'Manage Orders',
-      icon: <Bell className="w-5 h-5" />,
+      icon: <Package className="w-5 h-5" />, // Package for orders
       component: <ManageOrders />
     },
     {
       id: 'manage-users',
       label: 'Manage Users',
-      icon: <Users className="w-5 h-5" />,
+      icon: <Users className="w-5 h-5" />, // Users for user management
       component: <ManageUser />
     },
     {
       id: 'manage-products',
       label: 'Manage Products',
-      icon: <Package className="w-5 h-5" />,
+      icon: <Package className="w-5 h-5" />, // Package for products
       component: <ManageProduct />
     },
     {
       id: 'manage-offers',
       label: 'Manage Offers',
-      icon: <Package className="w-5 h-5" />,
+      icon: <Tag className="w-5 h-5" />, // Tag for offers
       component: <ManageOffers />
     },
     {
       id: 'manage-healthy-eat',
       label: 'Manage Healthy Eat',
-      icon: <Heart className="w-5 h-5" />,
+      icon: <Heart className="w-5 h-5" />, // Heart for healthy eat
       component: <ManageHealthyEat />
     },
     {
       id: 'manage-franchise',
       label: 'Manage Franchise',
-      icon: <Building className="w-5 h-5" />,
+      icon: <Building className="w-5 h-5" />, // Building for franchise
       component: <ManageFranchise />
     },
-     {
+    {
       id: 'franchise-verification',
       label: 'Franchise Verification',
-      icon: <Building className="w-5 h-5" />,
+      icon: <User className="w-5 h-5" />, // User for franchise verification
       component: <FranchiseVerification />
     },
     {
       id: 'payments',
       label: 'Payments',
-      icon: <Building className="w-5 h-5" />,
+      icon: <Settings className="w-5 h-5" />, // Settings (or use CreditCard if available) for payments
       component: <PaymentsPage />
     },
     {
       id: 'delivered-records',
       label: 'Delivered Records',
-      icon: <Building className="w-5 h-5" />,
+      icon: <Building className="w-5 h-5" />, // ChevronDown for delivered records (or use Truck if available)
       component: <DeliveredRecord />
     },
     {
       id: 'manage-bmi',
       label: 'BMI Records',
-      icon: <Building className="w-5 h-5" />,
+      icon: <Heart className="w-5 h-5" />, // Heart for BMI (or use Activity if available)
       component: <BMIRecordsDashboard />
     }
   ];
