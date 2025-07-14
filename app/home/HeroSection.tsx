@@ -19,18 +19,18 @@ const HeroSection = () => {
               <span>🌱</span>
               <span>FRESH, WHOLESOME, AND DELICIOUS HEALTHY FOODS</span>
             </div>
-            
+
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">
               Fresh & Healthy
               <br />
               <span className="text-green-500">Food For You</span>
             </h1>
-            
+
             <p className="text-lg text-gray-600 max-w-lg">
               Discover nutritious meals crafted with care. From farm-fresh ingredients to your table, 
               we deliver health and taste in every bite.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors">
                 Order Now
@@ -41,7 +41,7 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right Content - Image */}
+          {/* Right Content - Images from /public folder */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, y: 40 }}
@@ -51,7 +51,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <Image 
-                  src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=500&q=80" 
+                  src="/images/hero1.jpg" 
                   alt="Healthy bowl" 
                   width={500}
                   height={192}
@@ -59,7 +59,7 @@ const HeroSection = () => {
                   priority
                 />
                 <Image 
-                  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" 
+                  src="/images/hero2.jpg" 
                   alt="Fresh salad" 
                   width={500}
                   height={128}
@@ -69,7 +69,7 @@ const HeroSection = () => {
               </div>
               <div className="pt-8">
                 <Image 
-                  src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?auto=format&fit=crop&w=500&q=80" 
+                  src="/images/hero3.jpg" 
                   alt="Healthy meal" 
                   width={500}
                   height={256}
@@ -80,19 +80,6 @@ const HeroSection = () => {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Scroll Down Indicator */}
-      <div className="absolute left-1/2 bottom-6 -translate-x-1/2 flex flex-col items-center z-10">
-        <span className="text-gray-400 text-xs mb-1">Scroll Down</span>
-        <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
-        >
-          <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="mx-auto">
-            <path d="M12 5v14m0 0l-6-6m6 6l6-6" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
       </div>
     </section>
   );

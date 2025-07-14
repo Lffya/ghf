@@ -1,47 +1,50 @@
 "use client";
-import { Truck } from 'lucide-react';
-import Image from "next/image";
+
+import { Truck } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const DeliverySection = () => {
+  const router = useRouter();
+
+  const handleExploreClick = () => {
+    router.push("/healthy-eats");
+    // Scroll to top after navigating
+    if (typeof window !== "undefined") {
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+    }
+  };
+
   return (
-    <section className="py-16 bg-gradient-to-r from-green-500 to-green-600">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center justify-between">
-          {/* Left Content */}
-          <div className="flex-1 text-white space-y-6 mb-8 lg:mb-0">
-            <div className="flex items-center space-x-3">
-              <Truck size={32} />
-              <h2 className="text-3xl font-bold">Delivery</h2>
-            </div>
-            
-            <p className="text-xl font-medium">
-              Order us online or contact us & get 25% off on your very first order!
-            </p>
-            
-            <button className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-              Order now
-            </button>
+    <section className="py-20 bg-green-50">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
+        {/* Text Content */}
+        <div className="max-w-xl space-y-6 text-center lg:text-left">
+          <div className="inline-flex items-center justify-center bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold text-sm w-fit mx-auto lg:mx-0">
+            <Truck className="mr-2" size={20} />
+            Fast & Fresh Delivery
           </div>
 
-          {/* Right Images */}
-          <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="relative">
-              <Image 
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?auto=format&fit=crop&w=400&q=80" 
-                alt="Healthy meal 1" 
-                width={400}
-                height={400}
-                className="w-48 h-48 object-cover rounded-2xl shadow-lg"
-              />
-              <Image 
-                src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=400&q=80" 
-                alt="Healthy meal 2" 
-                width={400}
-                height={400}
-                className="w-48 h-48 object-cover rounded-2xl shadow-lg absolute -top-4 -right-4 border-4 border-white"
-              />
-            </div>
+          <h2 className="text-4xl font-bold text-gray-800">
+            Get Your First Order
+          </h2>
+
+          <p className="text-lg text-gray-600">
+            Enjoy healthy and tasty meals delivered right to your doorstep. Order online or contact us directly to grab your discount!
+          </p>
+
+          <div>
+            <button
+              onClick={handleExploreClick}
+              className="inline-block bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition"
+            >
+              Order Now
+            </button>
           </div>
+        </div>
+
+        {/* Decorative Icon */}
+        <div className="relative w-full max-w-md h-64 bg-green-100 rounded-3xl flex items-center justify-center">
+          <Truck className="text-green-500 w-32 h-32 opacity-30" />
         </div>
       </div>
     </section>

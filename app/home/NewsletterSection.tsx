@@ -38,12 +38,12 @@ const NewsletterSection = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email Address"
-                className="flex-1 px-6 py-4 text-gray-800 focus:outline-none"
+                className="flex-1 px-6 py-4 bg-white border border-green-300 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-600"
                 required
               />
               <button
                 type="submit"
-                className="bg-white text-green-600 px-8 py-4 font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-green-700 text-white px-8 py-4 font-semibold hover:bg-green-800 transition-colors"
               >
                 Subscribe
               </button>

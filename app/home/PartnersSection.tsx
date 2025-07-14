@@ -3,47 +3,40 @@ import Image from "next/image";
 
 const PartnersSection = () => {
   const partners = [
-    {
-      name: 'BigBasket',
-      logo: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      name: 'Swiggy',
-      logo: 'https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      name: 'Zomato',
-      logo: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      name: 'Amazon',
-      logo: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=200&q=80'
-    }
+    { name: "BigBasket", logo: "/images/bigbasket.png" },
+    { name: "Swiggy", logo: "/images/swiggy.png" },
+    { name: "Zomato", logo: "/images/zomato.png" },
+    { name: "Amazon", logo: "/images/amazon.png" },
   ];
 
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex items-center space-x-2 mb-12">
+        {/* Heading */}
+        <div className="flex items-center space-x-2 mb-12 justify-center">
           <span className="text-green-500 text-2xl">🤝</span>
           <h2 className="text-3xl font-bold text-gray-800">Our Associate Partners</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {/* Grid of Partners */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center">
           {partners.map((partner, index) => (
-            <div key={index} className="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-3 bg-white rounded-full flex items-center justify-center shadow-md">
-                  <Image 
-                    src={partner.logo} 
-                    alt={partner.name}
-                    width={48}
-                    height={48}
-                    className="w-12 h-12 object-contain"
-                  />
-                </div>
-                <p className="font-medium text-gray-700">{partner.name}</p>
+            <div
+              key={index}
+              className="flex flex-col items-center bg-gray-50 rounded-xl p-6 shadow hover:shadow-md transition-all"
+            >
+              <div className="w-20 h-20 flex items-center justify-center mb-3">
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={64}
+                  height={64}
+                  className="object-contain w-full h-full"
+                />
               </div>
+              <p className="text-sm font-medium text-gray-700 text-center">
+                {partner.name}
+              </p>
             </div>
           ))}
         </div>
