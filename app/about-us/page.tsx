@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react"
 
 export default function AboutUsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
       <section className="relative h-96 bg-gradient-to-r from-black/50 to-black/30">
         <Image
@@ -37,7 +37,7 @@ export default function AboutUsPage() {
               </h2>
             </div>
 
-            <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+            <div className="prose prose-lg max-w-none text-gray-800 space-y-6">
               <p className="text-lg leading-relaxed">
                 Welcome To <strong className="text-green-600">Greenheap Agro Foods Pvt Ltd</strong>, Where Health Meets
                 Heritage And Technology Connects You To Nature Goodness. Our Mission Is Simple Yet Profound: To
