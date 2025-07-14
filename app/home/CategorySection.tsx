@@ -1,36 +1,44 @@
 "use client";
+import { useRouter } from 'next/navigation';
 import { Apple, Cake, Coffee, UtensilsCrossed } from 'lucide-react';
 import Image from "next/image";
+import Link from "next/link";
 
 const CategorySection = () => {
+  const router = useRouter();
+
+  const handleExploreClick = () => {
+    router.push('/healthy-eats');
+  };
+
   const categories = [
     {
       title: 'Beverages',
       subtitle: 'Tea | Coffee | Cool drinks',
       icon: Coffee,
-      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=300&q=80',
-      color: 'from-orange-400 to-red-400'
+      image: '/images/categories1.jpg',
+      href: '/healthy-eats/beverage',
     },
     {
-      title: 'Foods',
+      title: 'Fruits',
       subtitle: 'Fruit & vegetables',
       icon: Apple,
-      image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80',
-      color: 'from-green-400 to-emerald-400'
+      image: '/images/categories2.jpg',
+      href: '/healthy-eats/fresh',
     },
     {
       title: 'Nutritious Foods',
       subtitle: 'Age 1 to 50',
       icon: UtensilsCrossed,
-      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=300&q=80',
-      color: 'from-purple-400 to-pink-400'
+      image: '/images/categories3.jpg',
+      href: '/healthy-eats/kids-nutrition',
     },
     {
       title: 'Healthy Beverages',
       subtitle: 'Age 10 to 200',
       icon: Cake,
-      image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=300&q=80',
-      color: 'from-blue-400 to-cyan-400'
+      image: '/images/categories4.jpg',
+      href: '/healthy-eats/teenage-foods',
     }
   ];
 
@@ -42,30 +50,34 @@ const CategorySection = () => {
             <span className="text-green-500 text-2xl">🤔</span>
             <h2 className="text-3xl font-bold text-gray-800">What&apos;s on Your Mind?</h2>
           </div>
-          <button className="text-green-500 font-medium hover:text-green-600 transition-colors">
+          <button
+            onClick={handleExploreClick}
+            className="text-green-500 font-medium hover:text-green-600 transition-colors"
+          >
             Explore More
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-90`}></div>
-                <Image 
-                  src={category.image} 
-                  alt={category.title}
-                  width={300}
-                  height={192}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                  <category.icon size={32} className="mb-2 opacity-80" />
-                  <h3 className="text-xl font-bold mb-1">{category.title}</h3>
-                  <p className="text-sm opacity-90">{category.subtitle}</p>
+            <Link href={category.href} key={index}>
+              <div className="group cursor-pointer">
+                <div className="rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                  <Image 
+                    src={category.image} 
+                    alt={category.title}
+                    width={300}
+                    height={192}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4 text-center bg-white">
+                    <category.icon size={32} className="mb-2 mx-auto text-green-600" />
+                    <h3 className="text-lg font-bold mb-1 text-gray-800">{category.title}</h3>
+                    <p className="text-sm text-gray-600">{category.subtitle}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

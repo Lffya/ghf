@@ -1,6 +1,7 @@
 "use client";
 import { Leaf } from 'lucide-react';
 import Image from "next/image";
+import Link from "next/link";
 
 const AboutSection = () => {
   return (
@@ -19,8 +20,8 @@ const AboutSection = () => {
             </h3>
             
             <p className="text-gray-600 leading-relaxed">
-              Greenheap Agro Foods Pvt Ltd, offers &apos;Smart, Health, 
-              Heritage and Technology Connect We To Nature&apos;s Goodness.&apos; Our 
+              Greenheap Agro Foods Pvt Ltd, offers Smart, Health, 
+              Heritage and Technology Connect We To Nature&apos;s Goodness. Our 
               Mission Is Simple Yet Profound: To Bring You Locally 
               Grown, Nutrient-Rich Food Straight From Our Farms To Your Table.
             </p>
@@ -32,16 +33,18 @@ const AboutSection = () => {
               of quality and nutrition.
             </p>
             
-            <button className="bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition-colors">
-              Read More
-            </button>
+            <Link href="/about-us">
+              <button className="bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition-colors">
+                Read More
+              </button>
+            </Link>
           </div>
 
           {/* Right Content - Images */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               <Image 
-                src="https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=500&q=80" 
+                src="/images/about1.jpg" 
                 alt="Fresh produce" 
                 width={500}
                 height={256}
@@ -49,14 +52,14 @@ const AboutSection = () => {
               />
               <div className="space-y-4">
                 <Image 
-                  src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?auto=format&fit=crop&w=500&q=80" 
+                  src="/images/about2.jpg" 
                   alt="Healthy cooking" 
                   width={500}
                   height={128}
                   className="rounded-2xl shadow-lg w-full h-32 object-cover"
                 />
                 <Image 
-                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80" 
+                  src="/images/about3.jpg" 
                   alt="Fresh vegetables" 
                   width={500}
                   height={112}
