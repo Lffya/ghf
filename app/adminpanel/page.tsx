@@ -86,7 +86,7 @@ const AdminPanel: React.FC = () => {
     },
     {
       id: 'manage-offers',
-      label: 'Manage Products',
+      label: 'Manage Offers',
       icon: <Package className="w-5 h-5" />,
       component: <ManageOffers />
     },
