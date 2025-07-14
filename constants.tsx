@@ -1,3 +1,223 @@
+// Delivery record types and mock data for delivered records page
+export type DeliveryRecordType =
+  | {
+      id: string;
+      type: 'franchise-equipment';
+      franchise: string;
+      equipment: string;
+      deliveredOn: string;
+      status: 'Delivered' | 'Pending' | 'Issue';
+      description?: string;
+    }
+  | {
+      id: string;
+      type: 'product-delivered';
+      user: string;
+      product: string;
+      deliveredOn: string;
+      status: 'Delivered' | 'Pending' | 'Issue';
+      description?: string;
+    }
+  | {
+      id: string;
+      type: 'franchise-product';
+      franchise: string;
+      product: string;
+      deliveredOn: string;
+      status: 'Delivered' | 'Pending' | 'Issue';
+      description?: string;
+    };
+
+export const DELIVERY_RECORDS: DeliveryRecordType[] = [
+  {
+    id: 'EQ-2024-001',
+    type: 'franchise-equipment',
+    franchise: 'Downtown Branch',
+    equipment: 'Oven Model X',
+    deliveredOn: '2024-07-10T10:00:00Z',
+    status: 'Delivered',
+    description: 'Installed and tested successfully.'
+  },
+  {
+    id: 'PR-2024-002',
+    type: 'product-delivered',
+    user: 'John Doe',
+    product: 'Healthy Salad Bowl',
+    deliveredOn: '2024-07-11T12:30:00Z',
+    status: 'Delivered',
+    description: 'Delivered to user address.'
+  },
+  {
+    id: 'FP-2024-003',
+    type: 'franchise-product',
+    franchise: 'Mall Location',
+    product: 'Protein Smoothie',
+    deliveredOn: '2024-07-12T09:15:00Z',
+    status: 'Pending',
+    description: 'Awaiting franchise confirmation.'
+  },
+  {
+    id: 'EQ-2024-004',
+    type: 'franchise-equipment',
+    franchise: 'Airport Branch',
+    equipment: 'Refrigerator Model Z',
+    deliveredOn: '2024-07-13T15:45:00Z',
+    status: 'Issue',
+    description: 'Damaged during transport.'
+  },
+  {
+    id: 'PR-2024-005',
+    type: 'product-delivered',
+    user: 'Jane Smith',
+    product: 'Nutri Snack Bar',
+    deliveredOn: '2024-07-13T17:00:00Z',
+    status: 'Delivered',
+    description: 'Delivered to user address.'
+  },
+  {
+    id: 'FP-2024-006',
+    type: 'franchise-product',
+    franchise: 'Downtown Branch',
+    product: 'Organic Jam',
+    deliveredOn: '2024-07-14T08:00:00Z',
+    status: 'Delivered',
+    description: 'Received by franchise manager.'
+  }
+];
+// User management types and mock data
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  status: 'Active' | 'Pending' | 'Blocked' | 'Rejected';
+  type: 'user' | 'franchise';
+  joinDate: string;
+  lastLogin: string;
+}
+
+export interface UserDocument {
+  type: string;
+  url: string;
+  verified: boolean;
+}
+
+export interface UserWithDocs extends User {
+  documents: UserDocument[];
+}
+
+export const MOCK_USERS: UserWithDocs[] = [
+  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'User', status: 'Active', type: 'user', joinDate: '2024-01-15', lastLogin: '2024-07-10', documents: [
+    { type: 'Aadhar Card', url: '/file.svg', verified: true },
+    { type: 'PAN Card', url: '/file.svg', verified: false },
+  ] },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Admin', status: 'Active', type: 'user', joinDate: '2023-11-20', lastLogin: '2024-07-14', documents: [
+    { type: 'Aadhar Card', url: '/file.svg', verified: true },
+  ] },
+  { id: 3, name: 'Franchise Owner', email: 'franchise1@example.com', role: 'Franchise', status: 'Pending', type: 'franchise', joinDate: '2024-06-01', lastLogin: '2024-07-05', documents: [
+    { type: 'GST Certificate', url: '/file.svg', verified: false },
+    { type: 'FSSAI License', url: '/file.svg', verified: true },
+  ] },
+  { id: 4, name: 'Franchise Two', email: 'franchise2@example.com', role: 'Franchise', status: 'Blocked', type: 'franchise', joinDate: '2024-05-12', lastLogin: '2024-06-20', documents: [
+    { type: 'GST Certificate', url: '/file.svg', verified: false },
+  ] },
+  { id: 5, name: 'Alice Cooper', email: 'alice@example.com', role: 'User', status: 'Rejected', type: 'user', joinDate: '2024-03-08', lastLogin: '2024-07-01', documents: [
+    { type: 'Aadhar Card', url: '/file.svg', verified: false },
+  ] },
+  { id: 6, name: 'Bob Wilson', email: 'bob@example.com', role: 'Franchise', status: 'Active', type: 'franchise', joinDate: '2024-02-14', lastLogin: '2024-07-12', documents: [
+    { type: 'GST Certificate', url: '/file.svg', verified: true },
+    { type: 'FSSAI License', url: '/file.svg', verified: true },
+  ] },
+  { id: 7, name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'Active', type: 'user', joinDate: '2024-04-22', lastLogin: '2024-07-13', documents: [
+    { type: 'Aadhar Card', url: '/file.svg', verified: true },
+  ] },
+  { id: 8, name: 'Diana Prince', email: 'diana@example.com', role: 'Franchise', status: 'Pending', type: 'franchise', joinDate: '2024-06-28', lastLogin: '2024-07-08', documents: [
+    { type: 'GST Certificate', url: '/file.svg', verified: false },
+  ] },
+  { id: 9, name: 'Eve Martinez', email: 'eve@example.com', role: 'User', status: 'Blocked', type: 'user', joinDate: '2024-01-30', lastLogin: '2024-06-15', documents: [
+    { type: 'Aadhar Card', url: '/file.svg', verified: false },
+  ] },
+  { id: 10, name: 'Frank Miller', email: 'frank@example.com', role: 'Franchise', status: 'Active', type: 'franchise', joinDate: '2024-03-18', lastLogin: '2024-07-11', documents: [
+    { type: 'GST Certificate', url: '/file.svg', verified: true },
+  ] },
+];
+
+// Payment transaction types and mock data
+export type PaymentType = 'all' | 'franchise' | 'user';
+
+export interface PaymentTransaction {
+  id: string;
+  type: PaymentType;
+  name: string;
+  upiId: string;
+  amount: number;
+  status: 'Success' | 'Pending' | 'Failed';
+  date: string;
+  reference: string;
+}
+
+export const PAYMENTS_MOCK_DATA: PaymentTransaction[] = [
+  {
+    id: 'TXN-1001',
+    type: 'all',
+    name: 'Platform Settlement',
+    upiId: 'ghf@upi',
+    amount: 50000,
+    status: 'Success',
+    date: '2024-07-13',
+    reference: 'REF1001'
+  },
+  {
+    id: 'TXN-1002',
+    type: 'franchise',
+    name: 'Downtown Branch',
+    upiId: 'downtown@upi',
+    amount: 12000,
+    status: 'Success',
+    date: '2024-07-12',
+    reference: 'REF1002'
+  },
+  {
+    id: 'TXN-1003',
+    type: 'user',
+    name: 'John Doe',
+    upiId: 'john.doe@upi',
+    amount: 1500,
+    status: 'Pending',
+    date: '2024-07-11',
+    reference: 'REF1003'
+  },
+  {
+    id: 'TXN-1004',
+    type: 'franchise',
+    name: 'Mall Location',
+    upiId: 'mall@upi',
+    amount: 8000,
+    status: 'Failed',
+    date: '2024-07-10',
+    reference: 'REF1004'
+  },
+  {
+    id: 'TXN-1005',
+    type: 'user',
+    name: 'Jane Smith',
+    upiId: 'jane.smith@upi',
+    amount: 2000,
+    status: 'Success',
+    date: '2024-07-09',
+    reference: 'REF1005'
+  },
+  {
+    id: 'TXN-1006',
+    type: 'all',
+    name: 'Monthly Payout',
+    upiId: 'ghf@upi',
+    amount: 75000,
+    status: 'Success',
+    date: '2024-07-08',
+    reference: 'REF1006'
+  }
+];
 // BMI mock records for dashboard
 export const BMI_MOCK_RECORDS = [
   {
@@ -131,7 +351,38 @@ export const BMI_MOCK_RECORDS = [
 ];
 
 // Franchise mock records for admin panel
-export const FRANCHISE_MOCK_DATA = [
+export interface FranchiseMockData {
+  id: number;
+  name: string;
+  location: string;
+  manager: string;
+  revenue: number;
+  status: string;
+  zone: string;
+  pinCode: string;
+  state: string;
+  district: string;
+  type: string;
+  size: number;
+  parking: string;
+  gst: string;
+  maxDeliveryTime: string;
+  minDeliveryTime: string;
+  description: string;
+  mapLink: string;
+  refundableDeposit: number;
+  ownerFirstName: string;
+  ownerLastName: string;
+  ownerPhone: string;
+  beneficiaryName: string;
+  accountType: string;
+  accountNumber: string;
+  bankName: string;
+  ifsc: string;
+  email: string;
+}
+
+export const FRANCHISE_MOCK_DATA: FranchiseMockData[] = [
   {
     id: 1,
     name: 'Downtown Branch',
