@@ -1,5 +1,5 @@
 'use client';
-import { ChevronLeft, ChevronRight, Eye, Filter, Mail, MessageCircle, Search, Send, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Eye, Filter, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { SUPPORT_TICKETS_MOCK } from '../../../constants';
 
@@ -32,7 +32,7 @@ interface Filters {
 }
 
 const Support = () => {
-  const [tickets, setTickets] = useState<Ticket[]>(SUPPORT_TICKETS_MOCK);
+  const [tickets] = useState<Ticket[]>(SUPPORT_TICKETS_MOCK);
 
   const [filters, setFilters] = useState<Filters>({
     type: 'all',
@@ -43,9 +43,7 @@ const Support = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
-  const [showReplyModal, setShowReplyModal] = useState(false);
-  const [replyText, setReplyText] = useState('');
-  const [replyType, setReplyType] = useState<'email' | 'account'>('email');
+  // Reply feature removed
   const itemsPerPage = 5;
 
   const filteredTickets = useMemo(() => {
@@ -72,31 +70,7 @@ const Support = () => {
     setCurrentPage(1);
   };
 
-  const handleSendReply = () => {
-    if (!replyText.trim() || !selectedTicket) return;
-
-    const updatedTickets = tickets.map(ticket => {
-      if (ticket.id === selectedTicket.id) {
-        return {
-          ...ticket,
-          messages: [...ticket.messages, {
-            sender: 'support',
-            text: replyText,
-            time: 'Just now'
-          }],
-          status: 'In Progress'
-        };
-      }
-      return ticket;
-    });
-
-    setTickets(updatedTickets);
-    setReplyText('');
-    setShowReplyModal(false);
-    // Update selected ticket
-    const updatedSelectedTicket = updatedTickets.find(t => t.id === selectedTicket.id) || null;
-    setSelectedTicket(updatedSelectedTicket);
-  };
+  // Reply feature removed
 
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
@@ -277,28 +251,7 @@ const Support = () => {
                 <div className="p-6 border-b border-gray-200">
                   <div className="flex items-center justify-between">
                     <h2 className="text-xl font-semibold text-gray-800">Ticket Details</h2>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => {
-                          setReplyType('email');
-                          setShowReplyModal(true);
-                        }}
-                        className="flex items-center gap-2 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                      >
-                        <Mail className="w-4 h-4" />
-                        Email Reply
-                      </button>
-                      <button
-                        onClick={() => {
-                          setReplyType('account');
-                          setShowReplyModal(true);
-                        }}
-                        className="flex items-center gap-2 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-                      >
-                        <MessageCircle className="w-4 h-4" />
-                        Account Reply
-                      </button>
-                    </div>
+                    {/* Reply buttons removed: only show ticket details */}
                   </div>
                 </div>
                 <div className="p-6">
@@ -370,54 +323,7 @@ const Support = () => {
           </div>
         </div>
 
-        {/* Reply Modal */}
-        {showReplyModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg max-w-md w-full p-6 shadow-xl">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {replyType === 'email' ? 'Send Email Reply' : 'Reply to User Account'}
-                </h3>
-                <button
-                  onClick={() => setShowReplyModal(false)}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-2">
-                  {replyType === 'email' 
-                    ? `Sending to: ${selectedTicket?.email}`
-                    : `Replying to: ${selectedTicket?.customerName}'s account`
-                  }
-                </p>
-                <textarea
-                  value={replyText}
-                  onChange={(e) => setReplyText(e.target.value)}
-                  placeholder="Type your reply..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-32 resize-none"
-                />
-              </div>
-              <div className="flex justify-end gap-2">
-                <button
-                  onClick={() => setShowReplyModal(false)}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleSendReply}
-                  disabled={!replyText.trim()}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <Send className="w-4 h-4" />
-                  Send Reply
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Reply modal removed: only show support tickets */}
       </div>
     </div>
   );

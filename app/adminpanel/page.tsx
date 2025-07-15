@@ -22,13 +22,14 @@ import DeliveredRecord from './deliveredrecord/page';
 import FranchiseVerification from './franchiseverification/franchiseverification';
 import ManageFranchise from './manage-franchise/page';
 import ManageHealthyEat from './manage-healthy-eat/page';
-import ManageOffers from './manage-offers/page'; // Assuming you have a ManageOffers component
+import ManageOffers from './manage-offers/page'; 
 import ManageProduct from './manage-product/page';
 import ManageUser from './manage-users/page';
 import ManageOrders from './manageorder/page';
 import Notification from './notifications/page';
 import PaymentsPage from './payments/page';
 import Support from './support/page';
+import OrderRecord from './orderrecord/page';
 // Mock components for the admin modules
 
 
@@ -45,6 +46,7 @@ interface MenuItem {
 
 const AdminPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
+  const [showNotificationPanel, setShowNotificationPanel] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState<boolean>(false);
 
@@ -60,12 +62,6 @@ const AdminPanel: React.FC = () => {
       label: 'Support',
       icon: <Headphones className="w-5 h-5" />, // Headphones for support
       component: <Support />
-    },
-    {
-      id: 'notifications',
-      label: 'Notifications',
-      icon: <Bell className="w-5 h-5" />, // Bell for notifications
-      component: <Notification />
     },
     {
       id: 'manage-orders',
@@ -120,6 +116,12 @@ const AdminPanel: React.FC = () => {
       label: 'Delivered Records',
       icon: <Building className="w-5 h-5" />, // ChevronDown for delivered records (or use Truck if available)
       component: <DeliveredRecord />
+    },
+    {
+      id: 'order-records',
+      label: 'Order Records',
+      icon: <Building className="w-5 h-5" />, // ChevronDown for delivered records (or use Truck if available)
+      component: <OrderRecord />
     },
     {
       id: 'manage-bmi',
@@ -197,7 +199,11 @@ const AdminPanel: React.FC = () => {
               </h2>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="p-2 rounded-md hover:bg-gray-100 relative">
+              <button
+                className="p-2 rounded-md hover:bg-gray-100 relative"
+                onClick={() => setShowNotificationPanel(true)}
+                title="View Notifications"
+              >
                 <Bell className="w-5 h-5 text-gray-600" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
@@ -214,10 +220,7 @@ const AdminPanel: React.FC = () => {
                 </button>
                 {userDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
-                    <button className="w-full flex items-center px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50">
-                      <Settings className="w-4 h-4 mr-2" />
-                      Settings
-                    </button>
+                    
                     <button className="w-full flex items-center px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50">
                       <LogOut className="w-4 h-4 mr-2" />
                       Logout
@@ -232,6 +235,21 @@ const AdminPanel: React.FC = () => {
         {/* Scrollable Main Content */}
         <main className="flex-1 overflow-y-auto p-6">
           {currentComponent}
+          {/* Notification Panel/Modal */}
+          {showNotificationPanel && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(0px)' }}>
+              <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl p-6 relative">
+                <button
+                  className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+                  onClick={() => setShowNotificationPanel(false)}
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <Notification />
+              </div>
+            </div>
+          )}
         </main>
       </div>
     </div>

@@ -1,5 +1,5 @@
 'use client';
-import { ChevronLeft, ChevronRight, Filter, Mail, MessageCircle, Search, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Filter, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 interface NotificationType {
@@ -63,8 +63,8 @@ const Notification = () => {
     },
     {
       id: 5,
-      type: 'support',
-      title: 'Support ticket',
+      type: 'registration',
+      title: 'New user registration',
       message: 'Lisa Chen needs help with delivery issues',
       email: 'lisa.chen@example.com',
       userName: 'Lisa Chen',
@@ -88,10 +88,7 @@ const Notification = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(3);
-  const [selectedNotification, setSelectedNotification] = useState<NotificationType | null>(null);
-  const [replyMode, setReplyMode] = useState<'email' | 'direct' | null>(null); // 'email' or 'direct'
-  const [replyMessage, setReplyMessage] = useState('');
-  const [showReplyModal, setShowReplyModal] = useState(false);
+  // Reply feature removed
 
   // Filter notifications based on search term
   const filteredNotifications = useMemo(() => {
@@ -114,31 +111,7 @@ const Notification = () => {
     setCurrentPage(Math.max(1, Math.min(page, totalPages)));
   };
 
-  // Handle reply actions
-  const handleReply = (notification: NotificationType, mode: 'email' | 'direct') => {
-    setSelectedNotification(notification);
-    setReplyMode(mode);
-    setShowReplyModal(true);
-  };
-
-  const sendReply = () => {
-    if (replyMode === 'email') {
-      // Simulate email sending
-      const subject = `Re: ${selectedNotification?.title}`;
-      const body = replyMessage;
-      console.log(`Email sent to ${selectedNotification?.email}`, { subject, body });
-      alert(`Email sent to ${selectedNotification?.email}`);
-    } else {
-      // Simulate direct message
-      console.log(`Direct message sent to ${selectedNotification?.userName}`, replyMessage);
-      alert(`Direct message sent to ${selectedNotification?.userName}`);
-    }
-    
-    setShowReplyModal(false);
-    setReplyMessage('');
-    setSelectedNotification(null);
-    setReplyMode(null);
-  };
+  // Reply feature removed
 
   const getColorClasses = (color: string, isRead: boolean) => {
     const opacity = isRead ? '30' : '50';
@@ -213,25 +186,7 @@ const Notification = () => {
                       </div>
                     </div>
                     
-                    {/* Action Buttons */}
-                    <div className="flex gap-2 flex-shrink-0 mt-2 sm:mt-0">
-                      <button
-                        onClick={() => handleReply(notification, 'email')}
-                        className="flex items-center gap-1 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-md transition-colors text-xs font-medium"
-                        title="Reply via Email"
-                      >
-                        <Mail className="w-3 h-3" />
-                        <span className="hidden sm:inline">Email</span>
-                      </button>
-                      <button
-                        onClick={() => handleReply(notification, 'direct')}
-                        className="flex items-center gap-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-700 rounded-md transition-colors text-xs font-medium"
-                        title="Direct Message"
-                      >
-                        <MessageCircle className="w-3 h-3" />
-                        <span className="hidden sm:inline">Direct</span>
-                      </button>
-                    </div>
+                    {/* Reply feature removed */}
                   </div>
                 </div>
               </div>
@@ -290,64 +245,7 @@ const Notification = () => {
         </div>
       )}
 
-      {/* Reply Modal */}
-      {showReplyModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">
-                  {replyMode === 'email' ? 'Send Email Reply' : 'Send Direct Message'}
-                </h3>
-                <button
-                  onClick={() => setShowReplyModal(false)}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              
-              {selectedNotification && (
-                <div className="mb-4 p-3 bg-gray-50 rounded-lg">
-                  <p className="text-sm font-medium text-gray-800">{selectedNotification.title}</p>
-                  <p className="text-sm text-gray-600 mt-1">{selectedNotification.message}</p>
-                  <p className="text-xs text-gray-500 mt-2">
-                    {replyMode === 'email' ? '📧' : '👤'} {replyMode === 'email' ? selectedNotification.email : selectedNotification.userName}
-                  </p>
-                </div>
-              )}
-              
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Your {replyMode === 'email' ? 'Email' : 'Message'}
-                </label>
-                <textarea
-                  value={replyMessage}
-                  onChange={(e) => setReplyMessage(e.target.value)}
-                  className="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  placeholder={`Write your ${replyMode === 'email' ? 'email' : 'message'} here...`}
-                />
-              </div>
-              
-              <div className="flex gap-3">
-                <button
-                  onClick={sendReply}
-                  disabled={!replyMessage.trim()}
-                  className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {replyMode === 'email' ? 'Send Email' : 'Send Message'}
-                </button>
-                <button
-                  onClick={() => setShowReplyModal(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Reply feature removed */}
     </div>
   );
 };

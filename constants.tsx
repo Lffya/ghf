@@ -1,3 +1,31 @@
+// Order record types and mock data for orderrecord page
+export interface Order {
+  id: string;
+  date: string; // ISO string
+  customer: string;
+  franchise?: string;
+  items: string;
+  total: number;
+  status: string;
+}
+
+export const FRANCHISE_ORDER_HISTORY: Order[] = [
+  { id: 'FO-2024-001', date: '2024-07-15T10:30:00Z', customer: 'John Doe', franchise: 'Downtown Branch', items: 'Burger, Fries, Coke', total: 450.00, status: 'Delivered' },
+  { id: 'FO-2024-002', date: '2024-07-14T14:15:00Z', customer: 'Jane Smith', franchise: 'Mall Branch', items: 'Pizza, Salad', total: 680.00, status: 'Preparing' },
+  { id: 'FO-2024-003', date: '2024-07-13T09:20:00Z', customer: 'Bob Wilson', franchise: 'Airport Branch', items: 'Sandwich, Coffee', total: 320.00, status: 'Cancelled' },
+  { id: 'FO-2024-004', date: '2024-07-12T16:45:00Z', customer: 'Alice Johnson', franchise: 'Downtown Branch', items: 'Pasta, Garlic Bread', total: 520.00, status: 'Delivered' },
+  { id: 'FO-2024-005', date: '2024-07-11T11:30:00Z', customer: 'Mike Davis', franchise: 'Mall Branch', items: 'Steak, Mashed Potatoes', total: 850.00, status: 'Delivered' },
+  { id: 'FO-2024-006', date: '2024-07-10T13:20:00Z', customer: 'Sarah Brown', franchise: 'Airport Branch', items: 'Salad, Soup', total: 380.00, status: 'Preparing' },
+];
+
+export const USER_ORDER_HISTORY: Order[] = [
+  { id: 'UO-2024-001', date: '2024-07-15T08:15:00Z', customer: 'Emily Chen', items: 'Breakfast Combo', total: 290.00, status: 'Delivered' },
+  { id: 'UO-2024-002', date: '2024-07-14T12:30:00Z', customer: 'David Lee', items: 'Lunch Special', total: 420.00, status: 'Delivered' },
+  { id: 'UO-2024-003', date: '2024-07-13T19:45:00Z', customer: 'Lisa Wang', items: 'Dinner for Two', total: 890.00, status: 'Preparing' },
+  { id: 'UO-2024-004', date: '2024-07-12T15:20:00Z', customer: 'Tom Jackson', items: 'Snack Pack', total: 180.00, status: 'Cancelled' },
+  { id: 'UO-2024-005', date: '2024-07-11T10:10:00Z', customer: 'Anna Martinez', items: 'Healthy Bowl', total: 350.00, status: 'Delivered' },
+  { id: 'UO-2024-006', date: '2024-07-10T17:30:00Z', customer: 'Chris Taylor', items: 'Family Meal', total: 1200.00, status: 'Delivered' },
+];
 // Delivery record types and mock data for delivered records page
 export type DeliveryRecordType =
   | {
