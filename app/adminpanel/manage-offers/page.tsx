@@ -54,7 +54,7 @@ export default function ManageOffers() {
             setFilter(e.target.value);
             setCurrentPage(1);
           }}
-          className="px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-80"
+          className="px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-80 text-gray-700"
         />
         <span className="text-sm text-gray-500">{filteredProducts.length} products</span>
       </div>
@@ -86,7 +86,7 @@ export default function ManageOffers() {
                     value={offerInputs[product.id] ?? ''}
                     onChange={e => handleInputChange(product.id, e.target.value)}
                     placeholder="Offer %"
-                    className="px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 w-24"
+                    className="px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 w-24 text-gray-700"
                   />
                   <button
                     onClick={() => handleApplyOffer(product.id)}

@@ -205,7 +205,7 @@ export default function ManageOrders() {
             <select
               value={editPriority}
               onChange={e => setEditPriority(e.target.value as Order['priority'])}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-700"
             >
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
@@ -216,7 +216,7 @@ export default function ManageOrders() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Items</label>
             <div className="flex flex-wrap gap-2 mb-2">
               {PRODUCT_MOCK_DATA.map(product => (
-                <label key={product.name} className="flex items-center gap-1 text-sm cursor-pointer">
+                <label key={product.name} className="flex items-center gap-1 text-sm cursor-pointer text-gray-700">
                   <input
                     type="checkbox"
                     checked={editItems.includes(product.name)}
@@ -232,7 +232,7 @@ export default function ManageOrders() {
                 </label>
               ))}
             </div>
-            <div className="text-xs text-gray-500">Selected: {editItems.join(', ') || 'None'}</div>
+            <div className="text-xs text-gray-700">Selected: {editItems.join(', ') || 'None'}</div>
           </div>
         </div>
         <div className="flex justify-end gap-2 p-4 border-t border-gray-200">
@@ -242,7 +242,7 @@ export default function ManageOrders() {
           >Cancel</button>
           <button
             onClick={handleEditSave}
-            className="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700"
+            className="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-gray-700"
           >Save</button>
         </div>
       </div>
@@ -308,22 +308,22 @@ export default function ManageOrders() {
               {/* Search and Actions */}
               <div className="flex gap-3">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-700 w-4 h-4" />
                   <input
                     type="text"
                     placeholder="Search orders..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent w-64"
+                    className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent w-64 text-gray-700"
                   />
                 </div>
                 <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
-                  <Filter className="w-4 h-4" />
-                  Filter
+                  <Filter className="w-4 h-4 text-gray-700" />
+                  <span className="text-gray-700">Filter</span>
                 </button>
                 <button className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
-                  <Download className="w-4 h-4" />
-                  Export
+                  <Download className="w-4 h-4 text-gray-200" />
+                  <span className="text-white-200">Export</span>
                 </button>
               </div>
             </div>
@@ -418,17 +418,17 @@ export default function ManageOrders() {
                               setSelectedOrder(order);
                               setShowDetails(true);
                             }}
-                            className="p-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                            className="p-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
                             title="View Details"
                           >
-                            <Eye className="w-4 h-4" />
+                            <Eye className="w-4 h-4 text-gray-700" />
                           </button>
                           <button
                             onClick={() => handleEditClick(order)}
-                            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                            className="p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                             title="Edit Order"
                           >
-                            <Edit3 className="w-4 h-4" />
+                            <Edit3 className="w-4 h-4 text-gray-700" />
                           </button>
                         </div>
                       </td>

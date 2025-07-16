@@ -155,7 +155,7 @@ const ManageProduct = () => {
 
         {/* Add/Edit Product Form */}
         {showAddForm && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(0px)' }}>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white bg-opacity-70" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(0px)' }}>
             <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
@@ -181,7 +181,7 @@ const ManageProduct = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       required
                     />
                   </div>
@@ -195,7 +195,7 @@ const ManageProduct = () => {
                       name="category"
                       value={formData.category}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       required
                     >
                       <option value="">Select Category</option>
@@ -216,7 +216,7 @@ const ManageProduct = () => {
                         name="customCategory"
                         value={formData.customCategory}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                         required
                       />
                     </div>
@@ -233,7 +233,7 @@ const ManageProduct = () => {
                       name="price"
                       value={formData.price}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       required
                     />
                   </div>
@@ -247,7 +247,7 @@ const ManageProduct = () => {
                       name="deliveryTime"
                       value={formData.deliveryTime}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       required
                     >
                       <option value="">Select Delivery Time</option>
@@ -266,7 +266,7 @@ const ManageProduct = () => {
                       type="file"
                       accept="image/*"
                       onChange={handleImageChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                     />
                     {formData.image && (
                       <div className="mt-2">
@@ -291,7 +291,7 @@ const ManageProduct = () => {
                       value={formData.description}
                       onChange={handleInputChange}
                       rows={4}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       required
                     />
                   </div>
@@ -300,7 +300,7 @@ const ManageProduct = () => {
                   <div className="flex gap-4 pt-4">
                     <button
                       onClick={handleSubmit}
-                      className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      className="flex-1 px-4 py-2 bg-green-600 text-gray-700 rounded-lg hover:bg-green-700 transition-colors"
                     >
                       {editingProduct ? 'Update Product' : 'Add Product'}
                     </button>
@@ -369,14 +369,14 @@ const ManageProduct = () => {
         {totalPages > 1 && (
           <div className="bg-white rounded-lg shadow-sm p-4 mt-6">
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-700">
                 Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, products.length)} of {products.length} results
               </div>
               <div className="flex space-x-2">
                 <button
                   onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-1 text-sm bg-gray-200 text-gray-600 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous
                 </button>
@@ -388,8 +388,8 @@ const ManageProduct = () => {
                       onClick={() => setCurrentPage(pageNum)}
                       className={`px-3 py-1 text-sm rounded ${
                         currentPage === pageNum
-                          ? 'bg-green-600 text-white'
-                          : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                          ? 'bg-green-600 text-gray-700'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                       }`}
                     >
                       {pageNum}
@@ -399,7 +399,7 @@ const ManageProduct = () => {
                 <button
                   onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
-                  className="px-3 py-1 text-sm bg-gray-200 text-gray-600 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>

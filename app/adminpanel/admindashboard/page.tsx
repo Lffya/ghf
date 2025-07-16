@@ -9,14 +9,9 @@ import {
   X
 } from 'lucide-react';
 import { useState } from 'react';
-import { FRANCHISE_MOCK_DATA } from '../../../constants';
+import { FRANCHISE_MOCK_DATA, mockRecentActivity } from '../../../constants';
 
-const mockRecentActivity = [
-  { type: 'Account Created', user: 'John Doe', time: '2 min ago' },
-  { type: 'New Product', user: 'Admin', time: '10 min ago' },
-  { type: 'Order Placed', user: 'Jane Smith', time: '30 min ago' },
-  { type: 'Franchise Added', user: 'Super Admin', time: '1 hr ago' },
-];
+
 
 
 
@@ -107,7 +102,7 @@ const AdminDashboard = () => {
 
       {/* Franchise Detail Modal */}
       {selectedFranchise && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40" style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(0px)' }}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(0px)' }}>
           <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative">
             <button className="absolute top-2 right-2 p-2 rounded hover:bg-gray-100" onClick={() => setSelectedFranchise(null)}>
               <X className="w-5 h-5" />
@@ -116,34 +111,34 @@ const AdminDashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Basic Info</h3>
-                <p><span className="font-medium">Location:</span> {selectedFranchise.location}</p>
-                <p><span className="font-medium">Manager:</span> {selectedFranchise.manager}</p>
-                <p><span className="font-medium">Revenue:</span> ₹{selectedFranchise.revenue}</p>
-                <p><span className="font-medium">Status:</span> {selectedFranchise.status}</p>
-                <p><span className="font-medium">Zone:</span> {selectedFranchise.zone}</p>
-                <p><span className="font-medium">Pin Code:</span> {selectedFranchise.pinCode}</p>
-                <p><span className="font-medium">State:</span> {selectedFranchise.state}</p>
-                <p><span className="font-medium">District:</span> {selectedFranchise.district}</p>
-                <p><span className="font-medium">Type:</span> {selectedFranchise.type}</p>
-                <p><span className="font-medium">Size:</span> {selectedFranchise.size} sqft</p>
-                <p><span className="font-medium">Parking:</span> {selectedFranchise.parking}</p>
-                <p><span className="font-medium">GST:</span> {selectedFranchise.gst}</p>
-                <p><span className="font-medium">Max Delivery Time:</span> {selectedFranchise.maxDeliveryTime}</p>
-                <p><span className="font-medium">Min Delivery Time:</span> {selectedFranchise.minDeliveryTime}</p>
-                <p><span className="font-medium">Description:</span> {selectedFranchise.description}</p>
-                <p><span className="font-medium">Map:</span> <a href={selectedFranchise.mapLink} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">View Map</a></p>
+                <p><span className="font-medium text-gray-700">Location:</span> <span className="text-gray-700">{selectedFranchise.location}</span></p>
+                <p><span className="font-medium text-gray-700">Manager:</span> <span className="text-gray-700">{selectedFranchise.manager}</span></p>
+                <p><span className="font-medium text-gray-700">Revenue:</span> <span className="text-gray-700">₹{selectedFranchise.revenue}</span></p>
+                <p><span className="font-medium text-gray-700">Status:</span> <span className="text-gray-700">{selectedFranchise.status}</span></p>
+                <p><span className="font-medium text-gray-700">Zone:</span> <span className="text-gray-700">{selectedFranchise.zone}</span></p>
+                <p><span className="font-medium text-gray-700">Pin Code:</span> <span className="text-gray-700">{selectedFranchise.pinCode}</span></p>
+                <p><span className="font-medium text-gray-700">State:</span> <span className="text-gray-700">{selectedFranchise.state}</span></p>
+                <p><span className="font-medium text-gray-700">District:</span> <span className="text-gray-700">{selectedFranchise.district}</span></p>
+                <p><span className="font-medium text-gray-700">Type:</span> <span className="text-gray-700">{selectedFranchise.type}</span></p>
+                <p><span className="font-medium text-gray-700">Size:</span> <span className="text-gray-700">{selectedFranchise.size} sqft</span></p>
+                <p><span className="font-medium text-gray-700">Parking:</span> <span className="text-gray-700">{selectedFranchise.parking}</span></p>
+                <p><span className="font-medium text-gray-700">GST:</span> <span className="text-gray-700">{selectedFranchise.gst}</span></p>
+                <p><span className="font-medium text-gray-700">Max Delivery Time:</span> <span className="text-gray-700">{selectedFranchise.maxDeliveryTime}</span></p>
+                <p><span className="font-medium text-gray-700">Min Delivery Time:</span> <span className="text-gray-700">{selectedFranchise.minDeliveryTime}</span></p>
+                <p><span className="font-medium text-gray-700">Description:</span> <span className="text-gray-700">{selectedFranchise.description}</span></p>
+                <p><span className="font-medium text-gray-700">Map:</span> <a href={selectedFranchise.mapLink} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">View Map</a></p>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Owner & Bank Info</h3>
-                <p><span className="font-medium">Owner:</span> {selectedFranchise.ownerFirstName} {selectedFranchise.ownerLastName}</p>
-                <p><span className="font-medium">Phone:</span> {selectedFranchise.ownerPhone}</p>
-                <p><span className="font-medium">Beneficiary:</span> {selectedFranchise.beneficiaryName}</p>
-                <p><span className="font-medium">Account Type:</span> {selectedFranchise.accountType}</p>
-                <p><span className="font-medium">Account Number:</span> {selectedFranchise.accountNumber}</p>
-                <p><span className="font-medium">Bank:</span> {selectedFranchise.bankName}</p>
-                <p><span className="font-medium">IFSC:</span> {selectedFranchise.ifsc}</p>
-                <p><span className="font-medium">Email:</span> {selectedFranchise.email}</p>
-                <p><span className="font-medium">Refundable Deposit:</span> ₹{selectedFranchise.refundableDeposit}</p>
+                <p><span className="font-medium text-gray-700">Owner:</span> <span className="text-gray-700">{selectedFranchise.ownerFirstName} {selectedFranchise.ownerLastName}</span></p>
+                <p><span className="font-medium text-gray-700">Phone:</span> <span className="text-gray-700">{selectedFranchise.ownerPhone}</span></p>
+                <p><span className="font-medium text-gray-700">Beneficiary:</span> <span className="text-gray-700">{selectedFranchise.beneficiaryName}</span></p>
+                <p><span className="font-medium text-gray-700">Account Type:</span> <span className="text-gray-700">{selectedFranchise.accountType}</span></p>
+                <p><span className="font-medium text-gray-700">Account Number:</span> <span className="text-gray-700">{selectedFranchise.accountNumber}</span></p>
+                <p><span className="font-medium text-gray-700">Bank:</span> <span className="text-gray-700">{selectedFranchise.bankName}</span></p>
+                <p><span className="font-medium text-gray-700">IFSC:</span> <span className="text-gray-700">{selectedFranchise.ifsc}</span></p>
+                <p><span className="font-medium text-gray-700">Email:</span> <span className="text-gray-700">{selectedFranchise.email}</span></p>
+                <p><span className="font-medium text-gray-700">Refundable Deposit:</span> <span className="text-gray-700">₹{selectedFranchise.refundableDeposit}</span></p>
               </div>
             </div>
           </div>
@@ -158,7 +153,7 @@ const AdminDashboard = () => {
             <li key={idx} className="py-3 flex items-center justify-between">
               <div>
                 <span className="font-medium text-gray-700">{activity.type}</span>
-                <span className="ml-2 text-gray-500 text-sm">by {activity.user}</span>
+                <span className="ml-2 text-gray-500 text-sm">by <span className="text-gray-700">{activity.user}</span></span>
               </div>
               <span className="text-xs text-gray-400">{activity.time}</span>
             </li>

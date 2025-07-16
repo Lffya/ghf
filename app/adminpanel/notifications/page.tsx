@@ -1,6 +1,7 @@
-'use client';
-import { ChevronLeft, ChevronRight, Filter, Search } from 'lucide-react';
-import { useMemo, useState } from 'react';
+"use client";
+import { ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
+import { useMemo, useState } from "react";
+import { NOTIFICATIONS_MOCK_DATA } from "../../../constants";
 
 interface NotificationType {
   id: number;
@@ -15,79 +16,11 @@ interface NotificationType {
 }
 
 const Notification = () => {
-  // Sample notification data
-  const [notifications] = useState<NotificationType[]>([
-    {
-      id: 1,
-      type: 'registration',
-      title: 'New user registration',
-      message: 'John Doe has registered as a new user',
-      email: 'john.doe@example.com',
-      userName: 'John Doe',
-      timestamp: '5 minutes ago',
-      isRead: false,
-      color: 'blue'
-    },
-    {
-      id: 2,
-      type: 'product',
-      title: 'Product added',
-      message: 'New healthy meal option added to catalog',
-      email: 'admin@foodapp.com',
-      userName: 'Admin User',
-      timestamp: '1 hour ago',
-      isRead: true,
-      color: 'green'
-    },
-    {
-      id: 3,
-      type: 'order',
-      title: 'New order received',
-      message: 'Sarah Johnson placed an order for premium meal plan',
-      email: 'sarah.johnson@example.com',
-      userName: 'Sarah Johnson',
-      timestamp: '2 hours ago',
-      isRead: false,
-      color: 'purple'
-    },
-    {
-      id: 4,
-      type: 'review',
-      title: 'Product review',
-      message: 'Mike Wilson left a 5-star review for Mediterranean Bowl',
-      email: 'mike.wilson@example.com',
-      userName: 'Mike Wilson',
-      timestamp: '3 hours ago',
-      isRead: true,
-      color: 'orange'
-    },
-    {
-      id: 5,
-      type: 'registration',
-      title: 'New user registration',
-      message: 'Lisa Chen needs help with delivery issues',
-      email: 'lisa.chen@example.com',
-      userName: 'Lisa Chen',
-      timestamp: '4 hours ago',
-      isRead: false,
-      color: 'red'
-    },
-    {
-      id: 6,
-      type: 'registration',
-      title: 'New user registration',
-      message: 'Alex Smith has registered as a new user',
-      email: 'alex.smith@example.com',
-      userName: 'Alex Smith',
-      timestamp: '5 hours ago',
-      isRead: true,
-      color: 'blue'
-    }
-  ]);
+  const [notifications] = useState<NotificationType[]>(NOTIFICATIONS_MOCK_DATA);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage] = useState(4);
   // Reply feature removed
 
   // Filter notifications based on search term
@@ -144,7 +77,7 @@ const Notification = () => {
           <input
             type="text"
             placeholder="Search by name, email, or content..."
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-700"
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -159,33 +92,30 @@ const Notification = () => {
         {filteredNotifications.length} notification{filteredNotifications.length !== 1 ? 's' : ''} found
       </div>
 
-      {/* Notifications List */}
-      <div className="space-y-4 mb-6">
+      {/* Notifications List with scrolling */}
+      <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto">
         {currentNotifications.length === 0 ? (
           <div className="text-center py-8 text-gray-500">
             <Filter className="w-12 h-12 mx-auto mb-2 text-gray-300" />
-            <p>No notifications found matching your search</p>
+            <p className="text-gray-700">No notifications found matching your search</p>
           </div>
         ) : (
           currentNotifications.map((notification) => {
             const colorClasses = getColorClasses(notification.color, notification.isRead);
-            
             return (
               <div key={notification.id} className={`flex flex-col sm:flex-row sm:items-start gap-3 p-4 ${colorClasses.bg} rounded-lg transition-all hover:shadow-md`}>
                 <div className={`w-2 h-2 ${colorClasses.dot} rounded-full mt-2 flex-shrink-0`}></div>
-                
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-gray-800 truncate">{notification.title}</p>
                       <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
                       <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 mt-2 text-xs text-gray-500">
-                        <span className="truncate">👤 {notification.userName}</span>
-                        <span className="truncate">📧 {notification.email}</span>
-                        <span className="whitespace-nowrap">⏰ {notification.timestamp}</span>
+                        <span className="truncate text-gray-700">👤 {notification.userName}</span>
+                        <span className="truncate text-gray-700">📧 {notification.email}</span>
+                        <span className="whitespace-nowrap text-gray-700">⏰ {notification.timestamp}</span>
                       </div>
                     </div>
-                    
                     {/* Reply feature removed */}
                   </div>
                 </div>
@@ -199,32 +129,30 @@ const Notification = () => {
       {totalPages > 1 && (
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-gray-200">
           <div className="text-sm text-gray-600">
-            Showing {startIndex + 1}-{Math.min(endIndex, filteredNotifications.length)} of {filteredNotifications.length} results
+            <span className="text-gray-700">Showing {startIndex + 1}-{Math.min(endIndex, filteredNotifications.length)} of {filteredNotifications.length} results</span>
           </div>
           
           <div className="flex items-center gap-2">
             <button
               onClick={() => goToPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-gray-700"
             >
-              <ChevronLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Previous</span>
+              <ChevronLeft className="w-4 h-4 text-gray-700" />
+              <span className="hidden sm:inline text-gray-700">Previous</span>
             </button>
-            
             <div className="flex gap-1">
               {[...Array(totalPages)].map((_, index) => {
                 const page = index + 1;
                 const isActive = page === currentPage;
-                
                 return (
                   <button
                     key={page}
                     onClick={() => goToPage(page)}
-                    className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    className={`w-8 h-8 rounded-md text-sm font-medium transition-colors text-gray-700 ${
                       isActive
-                        ? 'bg-blue-600 text-white'
-                        : 'border border-gray-300 hover:bg-gray-50'
+                        ? "bg-blue-600 text-white"
+                        : "border border-gray-300 hover:bg-gray-50"
                     }`}
                   >
                     {page}
@@ -232,14 +160,13 @@ const Notification = () => {
                 );
               })}
             </div>
-            
             <button
               onClick={() => goToPage(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-gray-700"
             >
-              <span className="hidden sm:inline">Next</span>
-              <ChevronRight className="w-4 h-4" />
+              <span className="hidden sm:inline text-gray-700">Next</span>
+              <ChevronRight className="w-4 h-4 text-gray-700" />
             </button>
           </div>
         </div>

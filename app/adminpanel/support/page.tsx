@@ -114,51 +114,59 @@ const Support = () => {
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="flex flex-wrap gap-4 items-center">
             <div className="flex items-center gap-2">
+              <label htmlFor="support-search" className="text-gray-700 text-sm mb-1 block">Search</label>
               <Search className="w-5 h-5 text-gray-400" />
               <input
+                id="support-search"
                 type="text"
                 placeholder="Search by ticket ID, customer, email, or mobile..."
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
+                className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64 text-gray-700"
                 value={filters.searchTerm}
                 onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
               />
             </div>
             
             <div className="flex items-center gap-2">
+              <label htmlFor="support-type" className="text-gray-700 text-sm mb-1 block">Type</label>
               <Filter className="w-5 h-5 text-gray-400" />
               <select
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                id="support-type"
+                className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                 value={filters.type}
                 onChange={(e) => handleFilterChange('type', e.target.value)}
               >
-                <option value="all">All Types</option>
-                <option value="user">User</option>
-                <option value="b2b">B2B</option>
-                <option value="franchise">Franchise</option>
+                <option value="all" className="text-gray-700">All Types</option>
+                <option value="user" className="text-gray-700">User</option>
+                <option value="b2b" className="text-gray-700">B2B</option>
+                <option value="franchise" className="text-gray-700">Franchise</option>
               </select>
             </div>
 
+            <label htmlFor="support-status" className="text-gray-700 text-sm mb-1 block">Status</label>
             <select
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="support-status"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
             >
-              <option value="all">All Status</option>
-              <option value="open">Open</option>
-              <option value="in progress">In Progress</option>
-              <option value="resolved">Resolved</option>
+              <option value="all" className="text-gray-700">All Status</option>
+              <option value="open" className="text-gray-700">Open</option>
+              <option value="in progress" className="text-gray-700">In Progress</option>
+              <option value="resolved" className="text-gray-700">Resolved</option>
             </select>
 
+            <label htmlFor="support-priority" className="text-gray-700 text-sm mb-1 block">Priority</label>
             <select
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="support-priority"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
               value={filters.priority}
               onChange={(e) => handleFilterChange('priority', e.target.value)}
             >
-              <option value="all">All Priority</option>
-              <option value="critical">Critical</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
+              <option value="all" className="text-gray-700">All Priority</option>
+              <option value="critical" className="text-gray-700">Critical</option>
+              <option value="high" className="text-gray-700">High</option>
+              <option value="medium" className="text-gray-700">Medium</option>
+              <option value="low" className="text-gray-700">Low</option>
             </select>
           </div>
         </div>
@@ -166,7 +174,7 @@ const Support = () => {
         {/* Tickets Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Tickets List */}
-          <div className="bg-white rounded-lg shadow-sm">
+          <div className="bg-white rounded-lg shadow-sm w-full max-h-fit">
             <div className="p-6 border-b border-gray-200">
               <h2 className="text-xl font-semibold text-gray-800">Support Tickets</h2>
             </div>
@@ -209,16 +217,16 @@ const Support = () => {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="p-6 border-t border-gray-200 flex items-center justify-between">
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-700">
                   Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, filteredTickets.length)} of {filteredTickets.length} tickets
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
-                    className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-4 h-4 text-gray-700" />
                   </button>
                   {[...Array(totalPages)].map((_, i) => (
                     <button
@@ -227,18 +235,18 @@ const Support = () => {
                       className={`px-3 py-2 rounded-lg text-sm ${
                         currentPage === i + 1
                           ? 'bg-blue-500 text-white'
-                          : 'border border-gray-300 hover:bg-gray-50'
+                          : 'border border-gray-300 hover:bg-gray-50 text-gray-700'
                       }`}
                     >
-                      {i + 1}
+                      <span className="text-gray-700">{i + 1}</span>
                     </button>
                   ))}
                   <button
                     onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                     disabled={currentPage === totalPages}
-                    className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-4 h-4 text-gray-700" />
                   </button>
                 </div>
               </div>
@@ -289,29 +297,7 @@ const Support = () => {
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-4">Conversation History</h4>
-                    <div className="space-y-4 max-h-96 overflow-y-auto">
-                      {selectedTicket.messages.map((message, index) => (
-                        <div
-                          key={index}
-                          className={`p-4 rounded-lg ${
-                            message.sender === 'customer'
-                              ? 'bg-gray-100 ml-0 mr-8'
-                              : 'bg-blue-100 ml-8 mr-0'
-                          }`}
-                        >
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">
-                              {message.sender === 'customer' ? selectedTicket.customerName : 'Support Team'}
-                            </span>
-                            <span className="text-xs text-gray-500">{message.time}</span>
-                          </div>
-                          <p className="text-gray-800">{message.text}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  {/* Conversation History removed as requested */}
                 </div>
               </>
             ) : (
@@ -323,7 +309,7 @@ const Support = () => {
           </div>
         </div>
 
-        {/* Reply modal removed: only show support tickets */}
+      
       </div>
     </div>
   );

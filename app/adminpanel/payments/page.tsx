@@ -1,59 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-
-// Mock data for demonstration
-const PAYMENTS_MOCK_DATA = [
-  {
-    id: 1,
-    name: "John Doe",
-    type: "user",
-    upiId: "john.doe@paytm",
-    amount: 1500,
-    status: "Success",
-    date: "2024-01-15",
-    reference: "TXN123456789"
-  },
-  {
-    id: 2,
-    name: "ABC Franchise",
-    type: "franchise",
-    upiId: "abc.franchise@gpay",
-    amount: 25000,
-    status: "Pending",
-    date: "2024-01-14",
-    reference: "TXN987654321"
-  },
-  {
-    id: 3,
-    name: "Jane Smith",
-    type: "user",
-    upiId: "jane.smith@phonepe",
-    amount: 750,
-    status: "Failed",
-    date: "2024-01-13",
-    reference: "TXN456789123"
-  },
-  {
-    id: 4,
-    name: "XYZ Franchise",
-    type: "franchise",
-    upiId: "xyz.franchise@paytm",
-    amount: 50000,
-    status: "Success",
-    date: "2024-01-12",
-    reference: "TXN789123456"
-  },
-  {
-    id: 5,
-    name: "Mike Johnson",
-    type: "user",
-    upiId: "mike.johnson@gpay",
-    amount: 2200,
-    status: "Success",
-    date: "2024-01-11",
-    reference: "TXN321654987"
-  }
-];
+import { PAYMENTS_MOCK_DATA } from "../../../constants";
 
 const TABS = [
   { label: "All Payments", value: "all", icon: "📋" },
@@ -88,23 +35,32 @@ export default function PaymentsPage() {
   const [tab, setTab] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   const filtered = useMemo(() => {
     let data = PAYMENTS_MOCK_DATA;
-    
     if (tab !== "all") {
       data = data.filter((t) => t.type === tab);
     }
-    
     if (searchTerm) {
-      data = data.filter((t) => 
+      data = data.filter((t) =>
         t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         t.upiId.toLowerCase().includes(searchTerm.toLowerCase()) ||
         t.reference.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    
     return data;
   }, [tab, searchTerm]);
+
+  // Paginated data
+  const paginated = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filtered.slice(start, start + itemsPerPage);
+  }, [filtered, currentPage]);
+
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
 
   const stats = useMemo(() => {
     const total = filtered.reduce((sum, txn) => sum + txn.amount, 0);
@@ -191,11 +147,11 @@ export default function PaymentsPage() {
                   className={`px-4 py-2 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 ${
                     tab === t.value
                       ? "bg-[#22c55e] text-white shadow-lg border border-[#22c55e]"
-                      : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
+                      : "bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700"
                   }`}
                   onClick={() => setTab(t.value)}
                 >
-                  <span>{t.icon}</span>
+                  <span className="text-gray-700">{t.icon}</span>
                   {t.label}
                 </button>
               ))}
@@ -211,7 +167,7 @@ export default function PaymentsPage() {
                 placeholder="Search payments..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700"
               />
             </div>
           </div>
@@ -223,29 +179,16 @@ export default function PaymentsPage() {
             <table className="min-w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Customer
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Type
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    UPI ID
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Amount
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Date
-                  </th>
-                  {/* Reference column removed */}
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Customer</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Type</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">UPI ID</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Amount</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {filtered.length === 0 ? (
+                {paginated.length === 0 ? (
                   <tr>
                     <td colSpan={7} className="px-6 py-16 text-center">
                       <div className="flex flex-col items-center justify-center">
@@ -258,7 +201,7 @@ export default function PaymentsPage() {
                     </td>
                   </tr>
                 ) : (
-                  filtered.map((txn) => (
+                  paginated.map((txn) => (
                     <tr key={txn.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
@@ -274,13 +217,13 @@ export default function PaymentsPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${typeConfig[txn.type]?.color || ""}`}>
-                          <span>{typeConfig[txn.type]?.icon || ""}</span>
-                          {txn.type.charAt(0).toUpperCase() + txn.type.slice(1)}
+                        <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${typeConfig[txn.type]?.color || "text-gray-700"}`}> 
+                          <span className={typeConfig[txn.type]?.color ? "" : "text-gray-700"}>{typeConfig[txn.type]?.icon || ""}</span>
+                          <span className={typeConfig[txn.type]?.color ? "" : "text-gray-700"}>{txn.type.charAt(0).toUpperCase() + txn.type.slice(1)}</span>
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="font-mono text-sm text-gray-700 bg-gray-50 px-2 py-1 rounded">
+                        <span className="font-mono text-sm bg-gray-50 px-2 py-1 rounded text-gray-700">
                           {txn.upiId}
                         </span>
                       </td>
@@ -288,20 +231,48 @@ export default function PaymentsPage() {
                         <span className="font-bold text-gray-900 text-lg">₹{txn.amount.toLocaleString()}</span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold border ${statusConfig[txn.status]?.color || ""}`}>
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold border ${statusConfig[txn.status]?.color || "text-gray-700"}`}> 
                           <span className={`w-2 h-2 rounded-full ${statusConfig[txn.status]?.dot || ""}`}></span>
-                          {txn.status}
+                          <span className={statusConfig[txn.status]?.color ? "" : "text-gray-700"}>{txn.status}</span>
                         </span>
                       </td>
                       <td className="px-6 py-4">
                         <span className="text-sm text-gray-700">{txn.date}</span>
                       </td>
-                     
                     </tr>
                   ))
                 )}
               </tbody>
             </table>
+          </div>
+          {/* Pagination */}
+          <div className="flex justify-between items-center px-6 py-4 bg-gray-50 border-t border-gray-100">
+            <span className="text-sm text-gray-700">Page {currentPage} of {totalPages}</span>
+            <div className="flex gap-2">
+              <button
+                className="px-3 py-1 rounded text-gray-700 border border-gray-300 bg-white disabled:opacity-50"
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              >
+                &#8592;
+              </button>
+              {[...Array(totalPages)].map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`px-3 py-1 rounded text-gray-700 border border-gray-300 bg-white font-medium ${currentPage === idx + 1 ? "bg-[#22c55e] text-white" : ""}`}
+                  onClick={() => setCurrentPage(idx + 1)}
+                >
+                  {idx + 1}
+                </button>
+              ))}
+              <button
+                className="px-3 py-1 rounded text-gray-700 border border-gray-300 bg-white disabled:opacity-50"
+                disabled={currentPage === totalPages || totalPages === 0}
+                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              >
+                &#8594;
+              </button>
+            </div>
           </div>
         </div>
 

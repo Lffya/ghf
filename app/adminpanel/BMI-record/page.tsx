@@ -48,11 +48,11 @@ const BMIRecordsDashboard: React.FC = () => {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return <span className="text-gray-700">{new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric'
-    });
+    })}</span>;
   };
 
   const filteredRecords = records.filter(record => {
@@ -87,7 +87,7 @@ const BMIRecordsDashboard: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">{selectedRecord.name}</h1>
-                <p className="text-gray-600">Record ID: {selectedRecord.id}</p>
+                <p className="text-gray-600">Record ID: <span className="text-gray-700">{selectedRecord.id}</span></p>
                 <p className="text-sm text-gray-500 mt-1">
                   Submitted: {formatDate(selectedRecord.submittedAt)}
                 </p>
@@ -116,7 +116,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Calendar className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Age</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.age} years</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.age} years</span></p>
                       </div>
                     </div>
                     
@@ -124,7 +124,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Users className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Gender</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.gender}</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.gender}</span></p>
                       </div>
                     </div>
                   </div>
@@ -134,7 +134,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Ruler className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Height</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.height} cm</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.height} cm</span></p>
                       </div>
                     </div>
                     
@@ -142,7 +142,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Weight className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Weight</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.weight} kg</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.weight} kg</span></p>
                       </div>
                     </div>
                   </div>
@@ -162,7 +162,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Activity className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Activity Level</p>
-                        <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${getActivityColor(selectedRecord.activityLevel)}`}>
+                        <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${getActivityColor(selectedRecord.activityLevel)} text-gray-700`}>
                           {selectedRecord.activityLevel}
                         </span>
                       </div>
@@ -172,7 +172,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Clock className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Daily Sitting Hours</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.sittingHours} hours</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.sittingHours} hours</span></p>
                       </div>
                     </div>
                   </div>
@@ -182,7 +182,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Briefcase className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Work Type</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.workType}</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.workType}</span></p>
                       </div>
                     </div>
                     
@@ -190,7 +190,7 @@ const BMIRecordsDashboard: React.FC = () => {
                       <Utensils className="w-5 h-5 text-gray-400" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">Diet Preference</p>
-                        <p className="text-lg font-semibold text-gray-900">{selectedRecord.dietPreference}</p>
+                        <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.dietPreference}</span></p>
                       </div>
                     </div>
                   </div>
@@ -208,7 +208,7 @@ const BMIRecordsDashboard: React.FC = () => {
                   <Target className="w-5 h-5 text-gray-400" />
                   <div>
                     <p className="text-sm font-medium text-gray-500">Primary Goal</p>
-                    <p className="text-lg font-semibold text-gray-900">{selectedRecord.goal}</p>
+                    <p className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{selectedRecord.goal}</span></p>
                   </div>
                 </div>
               </div>
@@ -229,10 +229,10 @@ const BMIRecordsDashboard: React.FC = () => {
                   
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-gray-700">Category</span>
-                      <span className={`px-2 py-1 rounded text-xs font-medium ${getBMIColor(selectedRecord.bmi)}`}>
-                        {selectedRecord.bmiCategory}
-                      </span>
+                    <span className="text-sm font-medium text-gray-700">Category</span>
+                    <span className={`px-2 py-1 rounded text-xs font-medium ${getBMIColor(selectedRecord.bmi)} text-gray-700`}>
+                      {selectedRecord.bmiCategory}
+                    </span>
                     </div>
                     
                     <div className="w-full bg-gray-200 rounded-full h-2">
@@ -244,20 +244,20 @@ const BMIRecordsDashboard: React.FC = () => {
                     
                     <div className="text-xs text-gray-500 space-y-1">
                       <div className="flex justify-between">
-                        <span>Underweight</span>
-                        <span>&lt;18.5</span>
+                        <span className="text-gray-700">Underweight</span>
+                        <span className="text-gray-700">&lt;18.5</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Normal</span>
-                        <span>18.5-24.9</span>
+                        <span className="text-gray-700">Normal</span>
+                        <span className="text-gray-700">18.5-24.9</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Overweight</span>
-                        <span>25-29.9</span>
+                        <span className="text-gray-700">Overweight</span>
+                        <span className="text-gray-700">25-29.9</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Obese</span>
-                        <span>≥30</span>
+                        <span className="text-gray-700">Obese</span>
+                        <span className="text-gray-700">≥30</span>
                       </div>
                     </div>
                   </div>
@@ -295,24 +295,28 @@ const BMIRecordsDashboard: React.FC = () => {
             <div className="flex-1 max-w-md">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+               
                 <input
+                  id="bmi-search"
                   type="text"
                   placeholder="Search by name or ID..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22c55e] focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22c55e] focus:border-transparent text-gray-700"
                 />
               </div>
             </div>
             <div className="flex items-center space-x-2">
               <Filter className="w-5 h-5 text-gray-400" />
+              <label htmlFor="bmi-category" className="text-gray-700 text-sm mb-1 block">Category</label>
               <select
+                id="bmi-category"
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22c55e] focus:border-transparent"
+                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22c55e] focus:border-transparent text-gray-700"
               >
                 {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                  <option key={category} value={category} className="text-gray-700">{category}</option>
                 ))}
               </select>
             </div>
@@ -325,8 +329,8 @@ const BMIRecordsDashboard: React.FC = () => {
             <div key={record.id} className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{record.name}</h3>
-                  <p className="text-sm text-gray-500">{record.id}</p>
+                  <h3 className="text-lg font-semibold text-gray-900"><span className="text-gray-700">{record.name}</span></h3>
+                  <p className="text-sm text-gray-500"><span className="text-gray-700">{record.id}</span></p>
                 </div>
                 <div className={`px-2 py-1 rounded-full text-xs font-medium ${getBMIColor(record.bmi)}`}>
                   BMI: {record.bmi}
@@ -336,27 +340,27 @@ const BMIRecordsDashboard: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Age</span>
-                  <span className="text-sm font-medium text-gray-900">{record.age} years</span>
+                  <span className="text-sm font-medium text-gray-900"><span className="text-gray-700">{record.age} years</span></span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Gender</span>
-                  <span className="text-sm font-medium text-gray-900">{record.gender}</span>
+                  <span className="text-sm font-medium text-gray-900"><span className="text-gray-700">{record.gender}</span></span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Height</span>
-                  <span className="text-sm font-medium text-gray-900">{record.height} cm</span>
+                  <span className="text-sm font-medium text-gray-900"><span className="text-gray-700">{record.height} cm</span></span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Weight</span>
-                  <span className="text-sm font-medium text-gray-900">{record.weight} kg</span>
+                  <span className="text-sm font-medium text-gray-900"><span className="text-gray-700">{record.weight} kg</span></span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Goal</span>
-                  <span className="text-sm font-medium text-gray-900">{record.goal}</span>
+                  <span className="text-sm font-medium text-gray-900"><span className="text-gray-700">{record.goal}</span></span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Activity</span>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getActivityColor(record.activityLevel)}`}>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getActivityColor(record.activityLevel)} text-gray-700`}>
                     {record.activityLevel}
                   </span>
                 </div>

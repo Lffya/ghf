@@ -113,7 +113,7 @@ const FranchiseVerification = () => {
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="px-4 py-2 text-sm font-medium text-[#22c55e] bg-white border border-[#22c55e] rounded-lg hover:bg-[#e6faef] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-[#22c55e] rounded-lg hover:bg-[#e6faef] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
               >
                 Previous
               </button>
@@ -124,8 +124,8 @@ const FranchiseVerification = () => {
                     onClick={() => setPage(pageNum)}
                     className={`w-10 h-10 text-sm font-medium rounded-lg transition-all duration-150 border ${
                       page === pageNum
-                        ? 'bg-[#22c55e] text-white border-[#22c55e] shadow-lg'
-                        : 'text-[#22c55e] border-[#22c55e] bg-white hover:bg-[#e6faef] hover:shadow-md'
+                        ? 'bg-[#22c55e] text-gray-700 border-[#22c55e] shadow-lg'
+                        : 'text-gray-700 border-[#22c55e] bg-white hover:bg-[#e6faef] hover:shadow-md'
                     }`}
                   >
                     {pageNum}
@@ -135,7 +135,7 @@ const FranchiseVerification = () => {
               <button
                 onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="px-4 py-2 text-sm font-medium text-[#22c55e] bg-white border border-[#22c55e] rounded-lg hover:bg-[#e6faef] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-[#22c55e] rounded-lg hover:bg-[#e6faef] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
               >
                 Next
               </button>
@@ -145,26 +145,26 @@ const FranchiseVerification = () => {
       ) : (
         <div className="bg-gray-50 p-6 rounded-lg">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-gray-800">Franchise Details</h2>
+            <h2 className="text-xl font-bold text-gray-700">Franchise Details</h2>
             <button onClick={() => setSelected(null)} className="p-2 hover:bg-gray-100 rounded-lg"><X size={20} /></button>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-3">
-              <div><strong>Franchise Name:</strong> {selected.name}</div>
-              <div><strong>Refundable Deposit:</strong> ₹{selected.refundableDeposit?.toLocaleString()}</div>
-              <div><strong>Size (sqft):</strong> {selected.size}</div>
-              <div><strong>Parking:</strong> {selected.parking}</div>
-              <div><strong>GST:</strong> {selected.gst}</div>
-              <div><strong>Address:</strong> {selected.location}</div>
-              <div><strong>Max Delivery Time:</strong> {selected.maxDeliveryTime}</div>
-              <div><strong>Min Delivery Time:</strong> {selected.minDeliveryTime}</div>
-              <div><strong>Type:</strong> {selected.type}</div>
-              <div><strong>Description:</strong> {selected.description}</div>
-              <div><strong>Zone:</strong> {selected.zone}</div>
-              <div><strong>Pin Code:</strong> {selected.pinCode}</div>
-              <div><strong>State:</strong> {selected.state}</div>
-              <div><strong>District:</strong> {selected.district}</div>
-              <div className="flex items-center space-x-2">
+              <div className="text-gray-700"><strong>Franchise Name:</strong> {selected.name}</div>
+              <div className="text-gray-700"><strong>Refundable Deposit:</strong> ₹{selected.refundableDeposit?.toLocaleString()}</div>
+              <div className="text-gray-700"><strong>Size (sqft):</strong> {selected.size}</div>
+              <div className="text-gray-700"><strong>Parking:</strong> {selected.parking}</div>
+              <div className="text-gray-700"><strong>GST:</strong> {selected.gst}</div>
+              <div className="text-gray-700"><strong>Address:</strong> {selected.location}</div>
+              <div className="text-gray-700"><strong>Max Delivery Time:</strong> {selected.maxDeliveryTime}</div>
+              <div className="text-gray-700"><strong>Min Delivery Time:</strong> {selected.minDeliveryTime}</div>
+              <div className="text-gray-700"><strong>Type:</strong> {selected.type}</div>
+              <div className="text-gray-700"><strong>Description:</strong> {selected.description}</div>
+              <div className="text-gray-700"><strong>Zone:</strong> {selected.zone}</div>
+              <div className="text-gray-700"><strong>Pin Code:</strong> {selected.pinCode}</div>
+              <div className="text-gray-700"><strong>State:</strong> {selected.state}</div>
+              <div className="text-gray-700"><strong>District:</strong> {selected.district}</div>
+              <div className="flex items-center space-x-2 text-gray-700">
                 <strong>Map Link:</strong>
                 <a href={selected.mapLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
                   <MapPin size={16} />
@@ -172,15 +172,15 @@ const FranchiseVerification = () => {
               </div>
             </div>
             <div className="space-y-3">
-              <div><strong>First Name:</strong> {selected.ownerFirstName}</div>
-              <div><strong>Last Name:</strong> {selected.ownerLastName}</div>
-              <div><strong>Phone Number:</strong> {selected.ownerPhone}</div>
-              <div><strong>Beneficiary Name:</strong> {selected.beneficiaryName}</div>
-              <div><strong>Account Type:</strong> {selected.accountType}</div>
-              <div><strong>Account Number:</strong> {selected.accountNumber}</div>
-              <div><strong>Bank:</strong> {selected.bankName}</div>
-              <div><strong>IFSC:</strong> {selected.ifsc}</div>
-              <div><strong>Email:</strong> {selected.email}</div>
+              <div className="text-gray-700"><strong>First Name:</strong> {selected.ownerFirstName}</div>
+              <div className="text-gray-700"><strong>Last Name:</strong> {selected.ownerLastName}</div>
+              <div className="text-gray-700"><strong>Phone Number:</strong> {selected.ownerPhone}</div>
+              <div className="text-gray-700"><strong>Beneficiary Name:</strong> {selected.beneficiaryName}</div>
+              <div className="text-gray-700"><strong>Account Type:</strong> {selected.accountType}</div>
+              <div className="text-gray-700"><strong>Account Number:</strong> {selected.accountNumber}</div>
+              <div className="text-gray-700"><strong>Bank:</strong> {selected.bankName}</div>
+              <div className="text-gray-700"><strong>IFSC:</strong> {selected.ifsc}</div>
+              <div className="text-gray-700"><strong>Email:</strong> {selected.email}</div>
             </div>
           </div>
           <div className="mt-8 flex gap-4 justify-end">

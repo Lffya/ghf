@@ -1,5 +1,5 @@
 'use client';
-import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, Eye, Filter, Search, X } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, Filter, Search, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { FRANCHISE_ORDER_HISTORY, Order, USER_ORDER_HISTORY } from '../../../constants';
 
@@ -176,7 +176,6 @@ function FilterPanel({
           >
             <option value="">All Statuses</option>
             <option value="Delivered">Delivered</option>
-            <option value="Preparing">Preparing</option>
             <option value="Cancelled">Cancelled</option>
           </select>
         </div>
@@ -284,13 +283,12 @@ function OrderTable({
                 <SortButton field="status" currentField={sortField} direction={sortDirection} onClick={onSort} />
               </div>
             </th>
-            <th className="px-4 py-3 text-left font-semibold text-gray-700">Actions</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
           {orders.length === 0 ? (
             <tr>
-              <td colSpan={type === 'franchise' ? 8 : 7} className="text-center py-12 text-gray-400">
+              <td colSpan={type === 'franchise' ? 7 : 6} className="text-center py-12 text-gray-400">
                 <div className="flex flex-col items-center gap-2">
                   <Search className="w-8 h-8 text-gray-300" />
                   <span>No orders found matching your criteria</span>
@@ -318,11 +316,6 @@ function OrderTable({
                 <td className="px-4 py-3 font-semibold text-gray-800">₹{order.total.toFixed(2)}</td>
                 <td className="px-4 py-3">
                   <StatusBadge status={order.status} />
-                </td>
-                <td className="px-4 py-3">
-                  <button className="text-emerald-600 hover:text-emerald-800 transition-colors">
-                    <Eye className="w-4 h-4" />
-                  </button>
                 </td>
               </tr>
             ))
@@ -435,23 +428,23 @@ export default function OrderRecord() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                  <Search className="w-4 h-4 text-gray-400" />
+                  <Search className="w-4 h-4 text-gray-700" />
                   <input
                     type="text"
                     placeholder="Search orders..."
                     value={franchiseFilter}
                     onChange={e => { setFranchiseFilter(e.target.value); setFranchisePage(1); }}
-                    className="border-none outline-none w-48 text-sm"
+                    className="border-none outline-none w-48 text-sm text-gray-700"
                   />
                 </div>
                 <div className="relative">
                   <button
                     onClick={() => setFranchiseShowFilters(!franchiseShowFilters)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                      franchiseShowFilters ? 'bg-emerald-100 border-emerald-300 text-emerald-700' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                      franchiseShowFilters ? 'bg-emerald-100 border-emerald-300 text-emerald-700' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
                     }`}
                   >
-                    <Filter className="w-4 h-4" />
+                    <Filter className="w-4 h-4 text-gray-700" />
                     Filters
                   </button>
                   <FilterPanel
@@ -485,9 +478,9 @@ export default function OrderRecord() {
                   <button
                     onClick={() => setFranchisePage(p => Math.max(1, p - 1))}
                     disabled={franchisePage === 1}
-                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-4 h-4 text-gray-700" />
                     Previous
                   </button>
                   
@@ -499,7 +492,7 @@ export default function OrderRecord() {
                         className={`w-10 h-10 rounded-lg text-sm font-medium transition-colors ${
                           franchisePage === i + 1 
                             ? 'bg-emerald-600 text-white shadow-sm' 
-                            : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+                            : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
                         }`}
                       >
                         {i + 1}
@@ -510,10 +503,10 @@ export default function OrderRecord() {
                   <button
                     onClick={() => setFranchisePage(p => Math.min(franchiseTotalPages, p + 1))}
                     disabled={franchisePage === franchiseTotalPages}
-                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
                     Next
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-4 h-4 text-gray-700" />
                   </button>
                 </div>
               </div>
@@ -535,23 +528,23 @@ export default function OrderRecord() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm border border-gray-200">
-                  <Search className="w-4 h-4 text-gray-400" />
+                  <Search className="w-4 h-4 text-gray-700" />
                   <input
                     type="text"
                     placeholder="Search orders..."
                     value={userFilter}
                     onChange={e => { setUserFilter(e.target.value); setUserPage(1); }}
-                    className="border-none outline-none w-48 text-sm"
+                    className="border-none outline-none w-48 text-sm text-gray-700"
                   />
                 </div>
                 <div className="relative">
                   <button
                     onClick={() => setUserShowFilters(!userShowFilters)}
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                      userShowFilters ? 'bg-emerald-100 border-emerald-300 text-emerald-700' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                      userShowFilters ? 'bg-emerald-100 border-emerald-300 text-emerald-700' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
                     }`}
                   >
-                    <Filter className="w-4 h-4" />
+                    <Filter className="w-4 h-4 text-gray-700" />
                     Filters
                   </button>
                   <FilterPanel
@@ -583,9 +576,9 @@ export default function OrderRecord() {
                   <button
                     onClick={() => setUserPage(p => Math.max(1, p - 1))}
                     disabled={userPage === 1}
-                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-4 h-4 text-gray-700" />
                     Previous
                   </button>
                   <div className="flex items-center gap-1">
@@ -596,7 +589,7 @@ export default function OrderRecord() {
                         className={`w-10 h-10 rounded-lg text-sm font-medium transition-colors ${
                           userPage === i + 1 
                             ? 'bg-emerald-600 text-white shadow-sm' 
-                            : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+                            : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
                         }`}
                       >
                         {i + 1}
@@ -606,10 +599,10 @@ export default function OrderRecord() {
                   <button
                     onClick={() => setUserPage(p => Math.min(userTotalPages, p + 1))}
                     disabled={userPage === userTotalPages}
-                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
                     Next
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-4 h-4 text-gray-700" />
                   </button>
                 </div>
               </div>

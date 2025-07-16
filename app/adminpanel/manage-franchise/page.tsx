@@ -1,4 +1,4 @@
-import { Download, Edit, Eye, MapPin, Plus, Search, Upload, X } from 'lucide-react';
+import { Edit, Eye, MapPin, Plus, Search, Upload, X } from 'lucide-react';
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { FRANCHISE_MOCK_DATA } from '../../../constants';
 
@@ -49,7 +49,7 @@ const ManageFranchise = () => {
   const [showDetailView, setShowDetailView] = useState(false);
   const [selectedFranchise, setSelectedFranchise] = useState<Franchise | null>(null);
   const [editingFranchise, setEditingFranchise] = useState<Franchise | null>(null);
-  const [showDownloadMenu, setShowDownloadMenu] = useState(false);
+ 
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
   const [formData, setFormData] = useState<FranchiseFormData>({
@@ -171,29 +171,7 @@ const ManageFranchise = () => {
     setShowDetailView(true);
   };
 
-  const handleDownloadReport = (period: string) => {
-    // Generate and download report
-    const reportData = {
-      period: period,
-      franchises: franchises.map(f => ({
-        name: f.name,
-        revenue: f.revenue,
-        status: f.status
-      })),
-      totalRevenue: franchises.reduce((sum, f) => sum + f.revenue, 0),
-      activeCount: franchises.filter(f => f.status === 'Active').length,
-      generatedAt: new Date().toISOString()
-    };
-
-    const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `franchise-revenue-report-${period}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    setShowDownloadMenu(false);
-  };
+ 
 
   const handleFileUpload = (fieldName: string) => {
     if (fileInputRefs.current[fieldName]) {
@@ -543,14 +521,14 @@ const ManageFranchise = () => {
             placeholder="Search franchises..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700"
           />
         </div>
         
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700"
         >
           <option value="All">All Status</option>
           <option value="Active">Active</option>
@@ -560,7 +538,7 @@ const ManageFranchise = () => {
         <select
           value={filterLocation}
           onChange={(e) => setFilterLocation(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700"
         >
           <option value="All">All Locations</option>
           <option value="North">North</option>
@@ -569,37 +547,7 @@ const ManageFranchise = () => {
           <option value="West">West</option>
         </select>
 
-        <div className="relative">
-          <button
-            onClick={() => setShowDownloadMenu(!showDownloadMenu)}
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center space-x-2"
-          >
-            <Download size={16} />
-            <span>Download Report</span>
-          </button>
-          {showDownloadMenu && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-              <button
-                onClick={() => handleDownloadReport('yearly')}
-                className="w-full px-4 py-2 text-left hover:bg-gray-100"
-              >
-                Yearly Report
-              </button>
-              <button
-                onClick={() => handleDownloadReport('half-yearly')}
-                className="w-full px-4 py-2 text-left hover:bg-gray-100"
-              >
-                Half-Yearly Report
-              </button>
-              <button
-                onClick={() => handleDownloadReport('quarterly')}
-                className="w-full px-4 py-2 text-left hover:bg-gray-100"
-              >
-                Quarterly Report
-              </button>
-            </div>
-          )}
-        </div>
+        {/* Download Report button removed as requested */}
       </div>
 
       {/* Franchise Cards */}

@@ -236,7 +236,7 @@ const ManageHealthyEat = () => {
               value={filters.title}
               onChange={e => setFilters(prev => ({ ...prev, title: e.target.value, type: e.target.value }))}
               placeholder="Search by type or title..."
-              className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
             />
             <input
               type="number"
@@ -244,7 +244,7 @@ const ManageHealthyEat = () => {
               value={filters.calories}
               onChange={handleFilterChange}
               placeholder="Max calories"
-              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
             />
             <input
               type="number"
@@ -252,13 +252,13 @@ const ManageHealthyEat = () => {
               value={filters.price}
               onChange={handleFilterChange}
               placeholder="Max price"
-              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
             />
             <select
               name="time"
               value={filters.time}
               onChange={handleFilterChange}
-              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
             >
               <option value="">All Times</option>
               {timeOptions.map(time => (
@@ -269,7 +269,7 @@ const ManageHealthyEat = () => {
               name="listingType"
               value={filters.listingType}
               onChange={handleFilterChange}
-              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full md:w-1/6 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
             >
               <option value="all">All</option>
               <option value="admin">Admin Listed</option>
@@ -280,7 +280,7 @@ const ManageHealthyEat = () => {
 
         {/* Add Food Form Modal */}
         {showAddForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(0px)' }}>
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(0px)' }}>
             <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
@@ -319,7 +319,7 @@ const ManageHealthyEat = () => {
                         value={formData.image}
                         onChange={handleInputChange}
                         placeholder="https://example.com/image.jpg"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -348,7 +348,7 @@ const ManageHealthyEat = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="Food item title"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -362,7 +362,7 @@ const ManageHealthyEat = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="0.00"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -391,7 +391,7 @@ const ManageHealthyEat = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="e.g., 200g, 1kg"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -404,7 +404,7 @@ const ManageHealthyEat = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="e.g., 250"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -446,7 +446,7 @@ const ManageHealthyEat = () => {
                         value={formData.perItemServing}
                         onChange={handleInputChange}
                         placeholder="e.g., 1 cup"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -458,7 +458,7 @@ const ManageHealthyEat = () => {
                         value={formData.per10ItemsServing}
                         onChange={handleInputChange}
                         placeholder="e.g., 10 cups"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                     
@@ -470,7 +470,7 @@ const ManageHealthyEat = () => {
                         value={formData.per1ItemServing}
                         onChange={handleInputChange}
                         placeholder="e.g., 1 piece"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                       />
                     </div>
                   </div>
@@ -483,7 +483,7 @@ const ManageHealthyEat = () => {
                       onChange={handleInputChange}
                       rows={3}
                       placeholder="Describe the food item..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                     />
                   </div>
                   
@@ -495,7 +495,7 @@ const ManageHealthyEat = () => {
                       onChange={handleInputChange}
                       rows={3}
                       placeholder="List all ingredients..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-700"
                     />
                   </div>
                   
@@ -585,19 +585,19 @@ const ManageHealthyEat = () => {
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Price:</span>
-                    <span className="font-medium">${food.price}</span>
+                    <span className="font-medium text-gray-700">${food.price}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Calories:</span>
-                    <span className="font-medium">{food.calories} cal</span>
+                    <span className="font-medium text-gray-700">{food.calories} cal</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Weight:</span>
-                    <span className="font-medium">{food.weight}</span>
+                    <span className="font-medium text-gray-700">{food.weight}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Delivery:</span>
-                    <span className="font-medium">{food.timeToDeliver}</span>
+                    <span className="font-medium text-gray-700">{food.timeToDeliver}</span>
                   </div>
                 </div>
                 
@@ -637,7 +637,7 @@ const ManageHealthyEat = () => {
                 <button
                   onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-1 text-sm bg-gray-200 text-gray-600 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous
                 </button>
@@ -650,8 +650,8 @@ const ManageHealthyEat = () => {
                       onClick={() => setCurrentPage(pageNum)}
                       className={`px-3 py-1 text-sm rounded ${
                         currentPage === pageNum
-                          ? 'bg-green-600 text-white'
-                          : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                          ? 'bg-green-600 text-gray-700'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                       }`}
                     >
                       {pageNum}
@@ -662,7 +662,7 @@ const ManageHealthyEat = () => {
                 <button
                   onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
-                  className="px-3 py-1 text-sm bg-gray-200 text-gray-600 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>

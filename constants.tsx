@@ -1,3 +1,79 @@
+// Notification mock data for admin panel
+export const NOTIFICATIONS_MOCK_DATA = [
+  {
+    id: 1,
+    type: 'registration',
+    title: 'New user registration',
+    message: 'John Doe has registered as a new user',
+    email: 'john.doe@example.com',
+    userName: 'John Doe',
+    timestamp: '5 minutes ago',
+    isRead: false,
+    color: 'blue'
+  },
+  {
+    id: 2,
+    type: 'product',
+    title: 'Product added',
+    message: 'New healthy meal option added to catalog',
+    email: 'admin@foodapp.com',
+    userName: 'Admin User',
+    timestamp: '1 hour ago',
+    isRead: true,
+    color: 'green'
+  },
+  {
+    id: 3,
+    type: 'order',
+    title: 'New order received',
+    message: 'Sarah Johnson placed an order for premium meal plan',
+    email: 'sarah.johnson@example.com',
+    userName: 'Sarah Johnson',
+    timestamp: '2 hours ago',
+    isRead: false,
+    color: 'purple'
+  },
+  {
+    id: 4,
+    type: 'review',
+    title: 'Product review',
+    message: 'Mike Wilson left a 5-star review for Mediterranean Bowl',
+    email: 'mike.wilson@example.com',
+    userName: 'Mike Wilson',
+    timestamp: '3 hours ago',
+    isRead: true,
+    color: 'orange'
+  },
+  {
+    id: 5,
+    type: 'registration',
+    title: 'New user registration',
+    message: 'Lisa Chen needs help with delivery issues',
+    email: 'lisa.chen@example.com',
+    userName: 'Lisa Chen',
+    timestamp: '4 hours ago',
+    isRead: false,
+    color: 'red'
+  },
+  {
+    id: 6,
+    type: 'registration',
+    title: 'New user registration',
+    message: 'Alex Smith has registered as a new user',
+    email: 'alex.smith@example.com',
+    userName: 'Alex Smith',
+    timestamp: '5 hours ago',
+    isRead: true,
+    color: 'blue'
+  }
+];
+export const mockRecentActivity = [
+  { type: 'Account Created', user: 'John Doe', time: '2 min ago' },
+  { type: 'New Product', user: 'Admin', time: '10 min ago' },
+  { type: 'Order Placed', user: 'Jane Smith', time: '30 min ago' },
+  { type: 'Franchise Added', user: 'Super Admin', time: '1 hr ago' },
+];
+
 // Order record types and mock data for orderrecord page
 export interface Order {
   id: string;

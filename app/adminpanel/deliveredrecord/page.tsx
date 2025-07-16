@@ -34,10 +34,10 @@ const DeliveredRecord = () => {
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'franchise-equipment': return <Truck className="w-4 h-4" />;
-      case 'product-delivered': return <Package className="w-4 h-4" />;
-      case 'franchise-product': return <Building className="w-4 h-4" />;
-      default: return <Package className="w-4 h-4" />;
+      case 'franchise-equipment': return <Truck className="w-4 h-4 text-gray-700" />;
+      case 'product-delivered': return <Package className="w-4 h-4 text-gray-700" />;
+      case 'franchise-product': return <Building className="w-4 h-4 text-gray-700" />;
+      default: return <Package className="w-4 h-4 text-gray-700" />;
     }
   };
 
@@ -115,9 +115,9 @@ const DeliveredRecord = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {[
-            { label: "Total Records", value: filteredData.length, color: "[#22c55e]", icon: <Package className="w-5 h-5" /> },
-            { label: "Delivered", value: filteredData.filter(r => r.status === 'Delivered').length, color: "[#22c55e]", icon: <Package className="w-5 h-5" /> },
-            { label: "Pending", value: filteredData.filter(r => r.status === 'Pending').length, color: "amber-500", icon: <Package className="w-5 h-5" /> }
+            { label: "Total Records", value: filteredData.length, color: "[#22c55e]", icon: <Package className="w-5 h-5 text-gray-700" /> },
+            { label: "Delivered", value: filteredData.filter(r => r.status === 'Delivered').length, color: "[#22c55e]", icon: <Package className="w-5 h-5 text-gray-700" /> },
+            { label: "Pending", value: filteredData.filter(r => r.status === 'Pending').length, color: "amber-500", icon: <Package className="w-5 h-5 text-gray-700" /> }
           ].map((stat) => (
             <div key={stat.label} className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-[#22c55e]/20 p-4">
               <div className="flex items-center justify-between">
@@ -153,7 +153,7 @@ const DeliveredRecord = () => {
                   <tr>
                     <td colSpan={7} className="text-center py-12">
                       <div className="flex flex-col items-center justify-center">
-                        <Package className="w-12 h-12 text-gray-300 mb-4" />
+                        <Package className="w-12 h-12 text-gray-700 mb-4" />
                         <p className="text-gray-500 text-lg">No records found</p>
                         <p className="text-gray-400 text-sm">Try adjusting your search or filters</p>
                       </div>
@@ -176,7 +176,7 @@ const DeliveredRecord = () => {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        {'user' in rec ? <User className="w-4 h-4 text-gray-400" /> : <Building className="w-4 h-4 text-gray-400" />}
+                        {'user' in rec ? <User className="w-4 h-4 text-gray-700" /> : <Building className="w-4 h-4 text-gray-700" />}
                         <span className="text-sm text-gray-900 font-medium">
                           {'user' in rec ? rec.user : rec.franchise}
                         </span>
@@ -189,7 +189,7 @@ const DeliveredRecord = () => {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-gray-400" />
+                        <Calendar className="w-4 h-4 text-gray-700" />
                         <span className="text-sm text-gray-600">
                           {rec.deliveredOn ? new Date(rec.deliveredOn).toLocaleDateString() : '-'}
                         </span>
@@ -207,14 +207,14 @@ const DeliveredRecord = () => {
                           onClick={() => { setSelectedRecord(rec); setShowDetail(true); }}
                           title="View Details"
                         >
-                          <Eye className="w-4 h-4" />
+                          <Eye className="w-4 h-4 text-gray-700" />
                         </button>
                         <button
                           className="p-2 rounded-lg hover:bg-[#e6faef] text-[#22c55e] transition-colors duration-150 border border-transparent hover:border-[#22c55e]"
                           title="Edit Status"
                           onClick={() => setEditStatusId(editStatusId === rec.id ? null : rec.id)}
                         >
-                          <Pencil className="w-4 h-4" />
+                          <Pencil className="w-4 h-4 text-gray-700" />
                         </button>
                         {editStatusId === rec.id && (
                           <select

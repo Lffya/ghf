@@ -10,14 +10,13 @@ const PAGE_SIZE = 8;
 
 const StatusBadge = ({ status }: { status: User['status'] }) => {
   const colors: Record<User['status'], string> = {
-    Active: 'bg-green-100 text-green-800 border-green-200',
-    Pending: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-    Blocked: 'bg-red-100 text-red-800 border-red-200',
-    Rejected: 'bg-gray-100 text-gray-800 border-gray-200'
+    Active: 'bg-[#e6faef] text-[#22c55e] border-[#22c55e]',
+    Pending: 'bg-amber-50 text-amber-700 border-amber-200',
+    Blocked: 'bg-red-50 text-red-700 border-red-200',
+    Rejected: 'bg-gray-50 text-gray-700 border-gray-200'
   };
-  
   return (
-    <span className={`px-2 py-1 rounded-full text-xs font-medium border ${colors[status] || 'bg-gray-100 text-gray-800'}`}>
+    <span className={`px-2 py-1 rounded-full text-xs font-medium border ${colors[status] || 'bg-gray-50 text-gray-700'}`}>
       {status}
     </span>
   );
@@ -26,9 +25,9 @@ const StatusBadge = ({ status }: { status: User['status'] }) => {
 const RoleBadge = ({ role, type }: { role: string; type: User['type'] }) => {
   const Icon = type === 'franchise' ? Building : role === 'Admin' ? Shield : Users;
   const colors: Record<'Admin' | 'Franchise' | 'User', string> = {
-    Admin: 'bg-purple-100 text-purple-800',
-    Franchise: 'bg-blue-100 text-blue-800',
-    User: 'bg-indigo-100 text-indigo-800'
+    Admin: 'bg-[#e6faef] text-[#22c55e]',
+    Franchise: 'bg-[#e6faef] text-[#22c55e]',
+    User: 'bg-[#e6faef] text-[#22c55e]'
   };
   return (
     <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${colors[role as 'Admin' | 'Franchise' | 'User']}`}>
@@ -199,19 +198,19 @@ const ManageUser = () => {
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-700" size={20} />
               <input
                 type="text"
                 placeholder="Search users by name or email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700"
               />
             </div>
 
             {/* Type Filter */}
             <div className="flex items-center gap-2">
-              <Filter size={16} className="text-gray-500" />
+              <Filter size={16} className="text-gray-700" />
               <div className="flex rounded-lg border border-gray-200 overflow-hidden">
                 {(['all', 'user', 'franchise'] as const).map((type) => (
                   <button
@@ -219,7 +218,7 @@ const ManageUser = () => {
                     onClick={() => { setFilter(type); setPage(1); }}
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       filter === type
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-[#22c55e] text-white'
                         : 'bg-white text-gray-700 hover:bg-gray-50'
                     }`}
                   >
@@ -237,7 +236,7 @@ const ManageUser = () => {
                   onClick={() => { setStatusFilter(status); setPage(1); }}
                   className={`px-3 py-2 text-sm font-medium transition-colors ${
                     statusFilter === status
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-[#22c55e] text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-50'
                   }`}
                 >
@@ -312,7 +311,7 @@ const ManageUser = () => {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center">
-                        <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
+                        <div className="h-10 w-10 rounded-full flex items-center justify-center text-white font-semibold text-sm" style={{ background: '#22c55e' }}>
                           {user.name.charAt(0).toUpperCase()}
                         </div>
                         <div className="ml-3">
@@ -415,29 +414,27 @@ const ManageUser = () => {
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                    className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
                   >
                     Previous
                   </button>
-                  
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
                     <button
                       key={pageNum}
                       onClick={() => setPage(pageNum)}
                       className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                         page === pageNum
-                          ? 'z-10 bg-blue-50 border-blue-500 text-blue-600'
-                          : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
+                          ? 'z-10 bg-blue-50 border-blue-500 text-gray-700'
+                          : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
                       }`}
                     >
                       {pageNum}
                     </button>
                   ))}
-                  
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                    className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
                   >
                     Next
                   </button>
@@ -450,7 +447,7 @@ const ManageUser = () => {
 
       {/* User Detail Modal */}
       {showDetailModal && selectedUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40" style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(0px)' }}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-70" style={{ backdropFilter: 'blur(0px)' }}>
           <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
             <button
               className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
