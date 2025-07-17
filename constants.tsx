@@ -74,33 +74,43 @@ export const mockRecentActivity = [
   { type: 'Franchise Added', user: 'Super Admin', time: '1 hr ago' },
 ];
 
+// Recent activity mock data for B2B Dashboard
+export const RECENT_ACTIVITY = [
+  { type: "Order", detail: "Order #1024 placed by Acme Corp", time: "2 min ago" },
+  { type: "Support", detail: "Ticket #2045 opened by Beta Ltd.", time: "10 min ago" },
+  { type: "Order", detail: "Order #1023 delivered to Gamma Inc.", time: "30 min ago" },
+  { type: "Order", detail: "Order #1022 cancelled by Delta LLC", time: "1 hr ago" },
+  { type: "Support", detail: "Ticket #2044 resolved for Acme Corp", time: "2 hr ago" },
+];
+
 // Order record types and mock data for orderrecord page
 export interface Order {
   id: string;
   date: string; // ISO string
   customer: string;
   franchise?: string;
+  phone: string;
   items: string;
   total: number;
   status: string;
 }
 
 export const FRANCHISE_ORDER_HISTORY: Order[] = [
-  { id: 'FO-2024-001', date: '2024-07-15T10:30:00Z', customer: 'John Doe', franchise: 'Downtown Branch', items: 'Burger, Fries, Coke', total: 450.00, status: 'Delivered' },
-  { id: 'FO-2024-002', date: '2024-07-14T14:15:00Z', customer: 'Jane Smith', franchise: 'Mall Branch', items: 'Pizza, Salad', total: 680.00, status: 'Preparing' },
-  { id: 'FO-2024-003', date: '2024-07-13T09:20:00Z', customer: 'Bob Wilson', franchise: 'Airport Branch', items: 'Sandwich, Coffee', total: 320.00, status: 'Cancelled' },
-  { id: 'FO-2024-004', date: '2024-07-12T16:45:00Z', customer: 'Alice Johnson', franchise: 'Downtown Branch', items: 'Pasta, Garlic Bread', total: 520.00, status: 'Delivered' },
-  { id: 'FO-2024-005', date: '2024-07-11T11:30:00Z', customer: 'Mike Davis', franchise: 'Mall Branch', items: 'Steak, Mashed Potatoes', total: 850.00, status: 'Delivered' },
-  { id: 'FO-2024-006', date: '2024-07-10T13:20:00Z', customer: 'Sarah Brown', franchise: 'Airport Branch', items: 'Salad, Soup', total: 380.00, status: 'Preparing' },
+  { id: 'FO-2024-001', date: '2024-07-15T10:30:00Z', customer: 'John Doe', franchise: 'Downtown Branch', phone: '9876543210', items: 'Burger, Fries, Coke', total: 450.00, status: 'Delivered' },
+  { id: 'FO-2024-002', date: '2024-07-14T14:15:00Z', customer: 'Jane Smith', franchise: 'Mall Branch', phone: '9123456780', items: 'Pizza, Salad', total: 680.00, status: 'Preparing' },
+  { id: 'FO-2024-003', date: '2024-07-13T09:20:00Z', customer: 'Bob Wilson', franchise: 'Airport Branch', phone: '9988776655', items: 'Sandwich, Coffee', total: 320.00, status: 'Cancelled' },
+  { id: 'FO-2024-004', date: '2024-07-12T16:45:00Z', customer: 'Alice Johnson', franchise: 'Downtown Branch', phone: '9090909090', items: 'Pasta, Garlic Bread', total: 520.00, status: 'Delivered' },
+  { id: 'FO-2024-005', date: '2024-07-11T11:30:00Z', customer: 'Mike Davis', franchise: 'Mall Branch', phone: '8888888888', items: 'Steak, Mashed Potatoes', total: 850.00, status: 'Delivered' },
+  { id: 'FO-2024-006', date: '2024-07-10T13:20:00Z', customer: 'Sarah Brown', franchise: 'Airport Branch', phone: '9191919191', items: 'Salad, Soup', total: 380.00, status: 'Preparing' },
 ];
 
 export const USER_ORDER_HISTORY: Order[] = [
-  { id: 'UO-2024-001', date: '2024-07-15T08:15:00Z', customer: 'Emily Chen', items: 'Breakfast Combo', total: 290.00, status: 'Delivered' },
-  { id: 'UO-2024-002', date: '2024-07-14T12:30:00Z', customer: 'David Lee', items: 'Lunch Special', total: 420.00, status: 'Delivered' },
-  { id: 'UO-2024-003', date: '2024-07-13T19:45:00Z', customer: 'Lisa Wang', items: 'Dinner for Two', total: 890.00, status: 'Preparing' },
-  { id: 'UO-2024-004', date: '2024-07-12T15:20:00Z', customer: 'Tom Jackson', items: 'Snack Pack', total: 180.00, status: 'Cancelled' },
-  { id: 'UO-2024-005', date: '2024-07-11T10:10:00Z', customer: 'Anna Martinez', items: 'Healthy Bowl', total: 350.00, status: 'Delivered' },
-  { id: 'UO-2024-006', date: '2024-07-10T17:30:00Z', customer: 'Chris Taylor', items: 'Family Meal', total: 1200.00, status: 'Delivered' },
+  { id: 'UO-2024-001', date: '2024-07-15T08:15:00Z', customer: 'Emily Chen', phone: '9000000001', items: 'Breakfast Combo', total: 290.00, status: 'Delivered' },
+  { id: 'UO-2024-002', date: '2024-07-14T12:30:00Z', customer: 'David Lee', phone: '9000000002', items: 'Lunch Special', total: 420.00, status: 'Delivered' },
+  { id: 'UO-2024-003', date: '2024-07-13T19:45:00Z', customer: 'Lisa Wang', phone: '9000000003', items: 'Dinner for Two', total: 890.00, status: 'Preparing' },
+  { id: 'UO-2024-004', date: '2024-07-12T15:20:00Z', customer: 'Tom Jackson', phone: '9000000004', items: 'Snack Pack', total: 180.00, status: 'Cancelled' },
+  { id: 'UO-2024-005', date: '2024-07-11T10:10:00Z', customer: 'Anna Martinez', phone: '9000000005', items: 'Healthy Bowl', total: 350.00, status: 'Delivered' },
+  { id: 'UO-2024-006', date: '2024-07-10T17:30:00Z', customer: 'Chris Taylor', phone: '9000000006', items: 'Family Meal', total: 1200.00, status: 'Delivered' },
 ];
 // Delivery record types and mock data for delivered records page
 export type DeliveryRecordType =
@@ -108,10 +118,12 @@ export type DeliveryRecordType =
       id: string;
       type: 'franchise-equipment';
       franchise: string;
-      equipment: string;
+      equipment?: string;
+      product?: string;
       deliveredOn: string;
       status: 'Delivered' | 'Pending' | 'Issue';
       description?: string;
+      phone?: string;
     }
   | {
       id: string;
@@ -121,6 +133,7 @@ export type DeliveryRecordType =
       deliveredOn: string;
       status: 'Delivered' | 'Pending' | 'Issue';
       description?: string;
+      phone?: string;
     }
   | {
       id: string;
@@ -130,6 +143,7 @@ export type DeliveryRecordType =
       deliveredOn: string;
       status: 'Delivered' | 'Pending' | 'Issue';
       description?: string;
+      phone?: string;
     };
 
 export const DELIVERY_RECORDS: DeliveryRecordType[] = [
@@ -140,52 +154,58 @@ export const DELIVERY_RECORDS: DeliveryRecordType[] = [
     equipment: 'Oven Model X',
     deliveredOn: '2024-07-10T10:00:00Z',
     status: 'Delivered',
-    description: 'Installed and tested successfully.'
+    description: 'Installed and tested successfully.',
+    phone: '9876543210'
   },
   {
-    id: 'PR-2024-002',
-    type: 'product-delivered',
-    user: 'John Doe',
-    product: 'Healthy Salad Bowl',
-    deliveredOn: '2024-07-11T12:30:00Z',
-    status: 'Delivered',
-    description: 'Delivered to user address.'
-  },
-  {
-    id: 'FP-2024-003',
+    id: 'FP-2024-002',
     type: 'franchise-product',
     franchise: 'Mall Location',
     product: 'Protein Smoothie',
     deliveredOn: '2024-07-12T09:15:00Z',
     status: 'Pending',
-    description: 'Awaiting franchise confirmation.'
+    description: 'Awaiting franchise confirmation.',
+    phone: '9123456780'
   },
   {
-    id: 'EQ-2024-004',
+    id: 'EQ-2024-003',
     type: 'franchise-equipment',
     franchise: 'Airport Branch',
     equipment: 'Refrigerator Model Z',
     deliveredOn: '2024-07-13T15:45:00Z',
     status: 'Issue',
-    description: 'Damaged during transport.'
+    description: 'Damaged during transport.',
+    phone: '9988776655'
   },
   {
-    id: 'PR-2024-005',
-    type: 'product-delivered',
-    user: 'Jane Smith',
-    product: 'Nutri Snack Bar',
-    deliveredOn: '2024-07-13T17:00:00Z',
-    status: 'Delivered',
-    description: 'Delivered to user address.'
-  },
-  {
-    id: 'FP-2024-006',
+    id: 'FP-2024-004',
     type: 'franchise-product',
     franchise: 'Downtown Branch',
     product: 'Organic Jam',
     deliveredOn: '2024-07-14T08:00:00Z',
     status: 'Delivered',
-    description: 'Received by franchise manager.'
+    description: 'Received by franchise manager.',
+    phone: '9090909090'
+  },
+  {
+    id: 'PR-2024-005',
+    type: 'product-delivered',
+    user: 'John Doe',
+    product: 'Healthy Salad Bowl',
+    deliveredOn: '2024-07-11T12:30:00Z',
+    status: 'Delivered',
+    description: 'Delivered to user address.',
+    phone: '9000000001'
+  },
+  {
+    id: 'PR-2024-006',
+    type: 'product-delivered',
+    user: 'Jane Smith',
+    product: 'Nutri Snack Bar',
+    deliveredOn: '2024-07-13T17:00:00Z',
+    status: 'Delivered',
+    description: 'Delivered to user address.',
+    phone: '9000000002'
   }
 ];
 // User management types and mock data
@@ -810,4 +830,16 @@ export const PRODUCT_MOCK_DATA = [
     deliveryTime: '30-45 min',
     image: null
   }
+];
+
+// B2B Orders mock data
+export const B2B_ORDERS = [
+  { id: 'B2B-1001', date: '2025-07-16', franchise: 'Acme Corp', customer: 'John Doe', phone: '9001000001', items: 'Product A, Product B', total: 1200, status: 'Accepted' },
+  { id: 'B2B-1002', date: '2025-07-15', franchise: 'Beta Ltd.', customer: 'Jane Smith', phone: '9001000002', items: 'Product C', total: 800, status: 'Dispatched' },
+  { id: 'B2B-1003', date: '2025-07-14', franchise: 'Gamma Inc.', customer: 'Alice Brown', phone: '9001000003', items: 'Product D, Product E', total: 1500, status: 'Delivered' },
+  { id: 'B2B-1004', date: '2025-07-13', franchise: 'Delta LLC', customer: 'Bob Wilson', phone: '9001000004', items: 'Product F', total: 600, status: 'Accepted' },
+  { id: 'B2B-1005', date: '2025-07-12', franchise: 'Acme Corp', customer: 'Charlie Green', phone: '9001000005', items: 'Product G', total: 950, status: 'Dispatched' },
+  { id: 'B2B-1006', date: '2025-07-11', franchise: 'Beta Ltd.', customer: 'Diana Prince', phone: '9001000006', items: 'Product H, Product I', total: 2000, status: 'Delivered' },
+  { id: 'B2B-1007', date: '2025-07-10', franchise: 'Gamma Inc.', customer: 'Eve Adams', phone: '9001000007', items: 'Product J', total: 700, status: 'Accepted' },
+  { id: 'B2B-1008', date: '2025-07-09', franchise: 'Delta LLC', customer: 'Frank Lee', phone: '9001000008', items: 'Product K', total: 1100, status: 'Dispatched' },
 ];

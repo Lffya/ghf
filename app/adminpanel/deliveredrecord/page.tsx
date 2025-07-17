@@ -19,12 +19,12 @@ const DeliveredRecord = () => {
       const matchesType = filter === "all" ||
         (filter === "user" && rec.type === "product-delivered") ||
         (filter === "franchise" && (rec.type === "franchise-equipment" || rec.type === "franchise-product"));
-      
-      const matchesSearch = searchTerm === "" || 
+
+      const matchesSearch = searchTerm === "" ||
         rec.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ('user' in rec ? rec.user.toLowerCase().includes(searchTerm.toLowerCase()) : rec.franchise.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        ('product' in rec ? rec.product.toLowerCase().includes(searchTerm.toLowerCase()) : rec.equipment.toLowerCase().includes(searchTerm.toLowerCase()));
-      
+        ('user' in rec && typeof rec.user === 'string' ? rec.user.toLowerCase().includes(searchTerm.toLowerCase()) : ('franchise' in rec && typeof rec.franchise === 'string' ? rec.franchise.toLowerCase().includes(searchTerm.toLowerCase()) : false)) ||
+        ('product' in rec && typeof rec.product === 'string' ? rec.product.toLowerCase().includes(searchTerm.toLowerCase()) : ('equipment' in rec && typeof rec.equipment === 'string' ? rec.equipment.toLowerCase().includes(searchTerm.toLowerCase()) : false));
+
       return matchesType && matchesSearch;
     });
   }, [filter, searchTerm, records]);
@@ -184,7 +184,7 @@ const DeliveredRecord = () => {
                     </td>
                     <td className="px-6 py-4">
                       <span className="text-sm text-gray-900 font-medium">
-                        {'product' in rec ? rec.product : rec.equipment}
+                        {'product' in rec && typeof rec.product === 'string' ? rec.product : ('equipment' in rec && typeof rec.equipment === 'string' ? rec.equipment : '-')}
                       </span>
                     </td>
                     <td className="px-6 py-4">
@@ -335,10 +335,10 @@ const DeliveredRecord = () => {
                 
                 <div className="bg-gray-50 p-4 rounded-xl">
                   <p className="text-xs text-gray-500 uppercase font-semibold mb-1">
-                    {'product' in selectedRecord ? 'Product' : 'Equipment'}
+                    {'product' in selectedRecord && typeof selectedRecord.product === 'string' ? 'Product' : 'Equipment'}
                   </p>
                   <p className="text-sm font-medium">
-                    {'product' in selectedRecord ? selectedRecord.product : selectedRecord.equipment}
+                    {'product' in selectedRecord && typeof selectedRecord.product === 'string' ? selectedRecord.product : ('equipment' in selectedRecord && typeof selectedRecord.equipment === 'string' ? selectedRecord.equipment : '-')}
                   </p>
                 </div>
                 
