@@ -19,6 +19,8 @@ import B2BOrderRecords from './b2bOrderRecords/page';
 import B2BDeliveredRecords from './b2bDeliveredRecords/page';
 import B2BPayments from './b2bPayments/page';
 import B2BSupport from './b2bSupport/page';
+import B2BFranchiseProfile from './b2bFranchiseProfile/page';
+import B2BRequestOrder from './b2bRequestOrder/page';
 // Placeholder B2B modules
 
 
@@ -44,6 +46,19 @@ const B2BPanel: React.FC = () => {
       label: 'Dashboard',
       icon: <Home className="w-5 h-5" />,
       component: <B2BDashboard />
+    },
+    {
+      id: 'b2b-profile',
+      label: 'Profile',
+      icon: <Home className="w-5 h-5" />,
+      component: <B2BFranchiseProfile />
+    },
+    
+    {
+      id: 'orders-request',
+      label: 'Orders Request',
+      icon: <Package className="w-5 h-5" />,
+      component: <B2BRequestOrder />
     },
     {
       id: 'manage-orders',

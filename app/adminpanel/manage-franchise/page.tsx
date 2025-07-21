@@ -1,3 +1,4 @@
+
 import { Edit, Eye, MapPin, Plus, Search, Upload, X } from 'lucide-react';
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { FRANCHISE_MOCK_DATA } from '../../../constants';
@@ -195,11 +196,11 @@ const ManageFranchise = () => {
           name={name}
           value={formData[name]}
           onChange={handleInputChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700"
           required={required}
         >
           {options.map(option => (
-            <option key={option} value={option}>{option}</option>
+            <option key={option} value={option} className="text-gray-700">{option}</option>
           ))}
         </select>
       ) : type === 'textarea' ? (
@@ -208,7 +209,7 @@ const ManageFranchise = () => {
           value={formData[name]}
           onChange={handleInputChange}
           rows={3}
-          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700"
           required={required}
         />
       ) : (
@@ -217,7 +218,7 @@ const ManageFranchise = () => {
           name={name}
           value={formData[name]}
           onChange={handleInputChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700"
           required={required}
         />
       )}
@@ -226,7 +227,7 @@ const ManageFranchise = () => {
 
   const DocumentUpload = ({ label, fieldName }: { label: string; fieldName: string }) => (
     <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+      <label className="block text-sm font-medium mb-2 text-gray-700">{label}</label>
       <div className="flex items-center space-x-2">
         <button
           type="button"
@@ -255,9 +256,9 @@ const ManageFranchise = () => {
 
   if (showDetailView && selectedFranchise) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-white rounded-lg shadow-sm text-gray-700">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Franchise Details</h2>
+          <h2 className="text-2xl font-bold text-gray-800 text-gray-700">Franchise Details</h2>
           <button
             onClick={() => setShowDetailView(false)}
             className="p-2 hover:bg-gray-100 rounded-lg"
@@ -269,26 +270,26 @@ const ManageFranchise = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Basic Details */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Basic Details</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Basic Details</h3>
             <div className="space-y-3">
-              <div><strong>Franchise Name:</strong> {selectedFranchise.name}</div>
-              <div><strong>Refundable Deposit:</strong> ₹{selectedFranchise.refundableDeposit?.toLocaleString()}</div>
-              <div><strong>Size (sqft):</strong> {selectedFranchise.size}</div>
-              <div><strong>Parking:</strong> {selectedFranchise.parking}</div>
-              <div><strong>GST:</strong> {selectedFranchise.gst}</div>
-              <div><strong>Address:</strong> {selectedFranchise.location}</div>
-              <div><strong>Max Delivery Time:</strong> {selectedFranchise.maxDeliveryTime}</div>
-              <div><strong>Min Delivery Time:</strong> {selectedFranchise.minDeliveryTime}</div>
-              <div><strong>Type:</strong> {selectedFranchise.type}</div>
-              <div><strong>Description:</strong> {selectedFranchise.description}</div>
-              <div><strong>Zone:</strong> {selectedFranchise.zone}</div>
-              <div><strong>Pin Code:</strong> {selectedFranchise.pinCode}</div>
-              <div><strong>State:</strong> {selectedFranchise.state}</div>
-              <div><strong>District:</strong> {selectedFranchise.district}</div>
+              <div><strong className="text-gray-700">Franchise Name:</strong> {selectedFranchise.name}</div>
+              <div><strong className="text-gray-700">Refundable Deposit:</strong> ₹{selectedFranchise.refundableDeposit?.toLocaleString()}</div>
+              <div><strong className="text-gray-700">Size (sqft):</strong> {selectedFranchise.size}</div>
+              <div><strong className="text-gray-700">Parking:</strong> {selectedFranchise.parking}</div>
+              <div><strong className="text-gray-700">GST:</strong> {selectedFranchise.gst}</div>
+              <div><strong className="text-gray-700">Address:</strong> {selectedFranchise.location}</div>
+              <div><strong className="text-gray-700">Max Delivery Time:</strong> {selectedFranchise.maxDeliveryTime}</div>
+              <div><strong className="text-gray-700">Min Delivery Time:</strong> {selectedFranchise.minDeliveryTime}</div>
+              <div><strong className="text-gray-700">Type:</strong> {selectedFranchise.type}</div>
+              <div><strong className="text-gray-700">Description:</strong> {selectedFranchise.description}</div>
+              <div><strong className="text-gray-700">Zone:</strong> {selectedFranchise.zone}</div>
+              <div><strong className="text-gray-700">Pin Code:</strong> {selectedFranchise.pinCode}</div>
+              <div><strong className="text-gray-700">State:</strong> {selectedFranchise.state}</div>
+              <div><strong className="text-gray-700">District:</strong> {selectedFranchise.district}</div>
               <div className="flex items-center space-x-2">
-                <strong>Map Link:</strong>
-                <a href={selectedFranchise.mapLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
-                  <MapPin size={16} />
+                <strong className="text-gray-700">Map Link:</strong>
+                <a href={selectedFranchise.mapLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-gray-700">
+                  <MapPin size={16} className="text-gray-700" />
                 </a>
               </div>
             </div>
@@ -296,51 +297,51 @@ const ManageFranchise = () => {
 
           {/* Owner Information */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Owner Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Owner Information</h3>
             <div className="space-y-3">
-              <div><strong>First Name:</strong> {selectedFranchise.ownerFirstName}</div>
-              <div><strong>Last Name:</strong> {selectedFranchise.ownerLastName}</div>
-              <div><strong>Phone Number:</strong> {selectedFranchise.ownerPhone}</div>
+              <div><strong className="text-gray-700">First Name:</strong> {selectedFranchise.ownerFirstName}</div>
+              <div><strong className="text-gray-700">Last Name:</strong> {selectedFranchise.ownerLastName}</div>
+              <div><strong className="text-gray-700">Phone Number:</strong> {selectedFranchise.ownerPhone}</div>
             </div>
 
-            <h3 className="text-lg font-semibold text-gray-800 mb-4 mt-6">Bank Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 mt-6 text-gray-700">Bank Information</h3>
             <div className="space-y-3">
-              <div><strong>Beneficiary Name:</strong> {selectedFranchise.beneficiaryName}</div>
-              <div><strong>Account Type:</strong> {selectedFranchise.accountType}</div>
-              <div><strong>Account Number:</strong> {selectedFranchise.accountNumber}</div>
-              <div><strong>Bank:</strong> {selectedFranchise.bankName}</div>
-              <div><strong>IFSC:</strong> {selectedFranchise.ifsc}</div>
+              <div><strong className="text-gray-700">Beneficiary Name:</strong> {selectedFranchise.beneficiaryName}</div>
+              <div><strong className="text-gray-700">Account Type:</strong> {selectedFranchise.accountType}</div>
+              <div><strong className="text-gray-700">Account Number:</strong> {selectedFranchise.accountNumber}</div>
+              <div><strong className="text-gray-700">Bank:</strong> {selectedFranchise.bankName}</div>
+              <div><strong className="text-gray-700">IFSC:</strong> {selectedFranchise.ifsc}</div>
             </div>
 
-            <h3 className="text-lg font-semibold text-gray-800 mb-4 mt-6">Login Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 mt-6 text-gray-700">Login Information</h3>
             <div className="space-y-3">
-              <div><strong>Email:</strong> {selectedFranchise.email}</div>
+              <div><strong className="text-gray-700">Email:</strong> {selectedFranchise.email}</div>
             </div>
           </div>
         </div>
 
         {/* Documents Section */}
         <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Documents</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Documents</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <div className="text-gray-600 mb-2">Aadhar ID</div>
+              <div className="mb-2 text-gray-700">Aadhar ID</div>
               <div className="text-sm text-gray-500">Document uploaded</div>
             </div>
             <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <div className="text-gray-600 mb-2">PAN Card</div>
+              <div className="mb-2 text-gray-700">PAN Card</div>
               <div className="text-sm text-gray-500">Document uploaded</div>
             </div>
             <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <div className="text-gray-600 mb-2">Digital Signature</div>
+              <div className="mb-2 text-gray-700">Digital Signature</div>
               <div className="text-sm text-gray-500">Document uploaded</div>
             </div>
             <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <div className="text-gray-600 mb-2">Address Document</div>
+              <div className="mb-2 text-gray-700">Address Document</div>
               <div className="text-sm text-gray-500">Document uploaded</div>
             </div>
             <div className="text-center p-4 border border-gray-200 rounded-lg">
-              <div className="text-gray-600 mb-2">Shop Photo</div>
+              <div className="mb-2 text-gray-700">Shop Photo</div>
               <div className="text-sm text-gray-500">Document uploaded</div>
             </div>
           </div>
@@ -363,7 +364,7 @@ const ManageFranchise = () => {
     return (
       <div className="p-6 bg-white rounded-lg shadow-sm">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">
+          <h2 className="text-2xl font-bold text-gray-800 text-gray-700">
             {editingFranchise ? 'Edit Franchise' : 'Add New Franchise'}
           </h2>
           <button
@@ -409,32 +410,32 @@ const ManageFranchise = () => {
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Basic Details */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Basic Details</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Basic Details</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FormField label="Franchise Name" name="name" required />
-              <FormField label="Refundable Deposit Amount" name="refundableDeposit" type="number" required />
-              <FormField label="Size (sqft)" name="size" type="number" required />
-              <FormField label="Parking" name="parking" type="select" options={['Available', 'Limited', 'Not Available']} />
-              <FormField label="GST" name="gst" required />
-              <FormField label="Manager" name="manager" required />
-              <FormField label="Revenue" name="revenue" type="number" required />
-              <FormField label="Status" name="status" type="select" options={['Active', 'Inactive']} />
-              <FormField label="Max Delivery Time" name="maxDeliveryTime" required />
-              <FormField label="Min Delivery Time" name="minDeliveryTime" required />
-              <FormField label="Type" name="type" type="select" options={['Standard', 'Express']} />
-              <FormField label="Zone" name="zone" required />
-              <FormField label="Pin Code" name="pinCode" required />
-              <FormField label="State" name="state" required />
-              <FormField label="District" name="district" required />
-              <FormField label="Map Link" name="mapLink" />
+              <div className="text-gray-700"><FormField label="Franchise Name" name="name" required /></div>
+              <div className="text-gray-700"><FormField label="Refundable Deposit Amount" name="refundableDeposit" type="number" required /></div>
+              <div className="text-gray-700"><FormField label="Size (sqft)" name="size" type="number" required /></div>
+              <div className="text-gray-700"><FormField label="Parking" name="parking" type="select" options={['Available', 'Limited', 'Not Available']} /></div>
+              <div className="text-gray-700"><FormField label="GST" name="gst" required /></div>
+              <div className="text-gray-700"><FormField label="Manager" name="manager" required /></div>
+              <div className="text-gray-700"><FormField label="Revenue" name="revenue" type="number" required /></div>
+              <div className="text-gray-700"><FormField label="Status" name="status" type="select" options={['Active', 'Inactive']} /></div>
+              <div className="text-gray-700"><FormField label="Max Delivery Time" name="maxDeliveryTime" required /></div>
+              <div className="text-gray-700"><FormField label="Min Delivery Time" name="minDeliveryTime" required /></div>
+              <div className="text-gray-700"><FormField label="Type" name="type" type="select" options={['Standard', 'Express']} /></div>
+              <div className="text-gray-700"><FormField label="Zone" name="zone" required /></div>
+              <div className="text-gray-700"><FormField label="Pin Code" name="pinCode" required /></div>
+              <div className="text-gray-700"><FormField label="State" name="state" required /></div>
+              <div className="text-gray-700"><FormField label="District" name="district" required /></div>
+              <div className="text-gray-700"><FormField label="Map Link" name="mapLink" /></div>
             </div>
-            <FormField label="Franchise Address" name="location" required />
-            <FormField label="Description" name="description" type="textarea" />
+            <div className="text-gray-700"><FormField label="Franchise Address" name="location" required /></div>
+            <div className="text-gray-700"><FormField label="Description" name="description" type="textarea" /></div>
           </div>
 
           {/* Owner Information */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Owner Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Owner Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField label="First Name" name="ownerFirstName" required />
               <FormField label="Last Name" name="ownerLastName" required />
@@ -444,7 +445,7 @@ const ManageFranchise = () => {
 
           {/* Bank Information */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Bank Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Bank Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField label="Beneficiary Name" name="beneficiaryName" required />
               <FormField label="Account Type" name="accountType" type="select" options={['Savings', 'Current']} />
@@ -456,7 +457,7 @@ const ManageFranchise = () => {
 
           {/* Login Information */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Login Information</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Login Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField label="Email" name="email" type="email" required />
             </div>
@@ -464,7 +465,7 @@ const ManageFranchise = () => {
 
           {/* Document Upload */}
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Documents</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-gray-700">Documents</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <DocumentUpload label="Upload Aadhar ID" fieldName="aadhar" />
               <DocumentUpload label="Upload PAN Card" fieldName="pan" />
@@ -501,7 +502,7 @@ const ManageFranchise = () => {
   return (
     <div className="p-6 bg-white rounded-lg shadow-sm">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Manage Franchise</h2>
+        <h2 className="text-2xl font-bold text-gray-800 text-gray-700">Manage Franchise</h2>
         <button
           onClick={() => setShowAddForm(true)}
           className="px-4 py-2 text-white rounded-lg hover:opacity-90 flex items-center space-x-2"

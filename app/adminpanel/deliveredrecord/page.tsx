@@ -125,7 +125,7 @@ const DeliveredRecord = () => {
                   <p className="text-sm text-gray-600">{stat.label}</p>
                   <p className={`text-2xl font-bold ${stat.color === '[#22c55e]' ? 'text-[#22c55e]' : stat.color === 'amber-500' ? 'text-amber-500' : 'text-gray-900'}`}>{stat.value}</p>
                 </div>
-                <div className={`bg-[${stat.color}] p-3 rounded-lg`} style={stat.color === '[#22c55e]' ? { backgroundColor: '#e6faef' } : {}}>
+                <div className={`bg-[${stat.color}] p-3 rounded-lg`} style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(0px)' }}>
                   {stat.icon}
                 </div>
               </div>
@@ -139,10 +139,10 @@ const DeliveredRecord = () => {
             <table className="w-full">
               <thead className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Record ID</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Order ID</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Type</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Recipient</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Item</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Product</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Delivered On</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
@@ -289,7 +289,7 @@ const DeliveredRecord = () => {
         {/* Enhanced Detail Modal */}
         {showDetail && selectedRecord && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg border border-white/20 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg border border-white/20 overflow-hidden text-gray-900">
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -309,49 +309,44 @@ const DeliveredRecord = () => {
                   </button>
                 </div>
               </div>
-              
-              <div className="p-6 space-y-4">
+              <div className="p-6 space-y-4 text-gray-900">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gray-50 p-4 rounded-xl">
-                    <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Type</p>
-                    <p className="text-sm font-medium capitalize">{selectedRecord.type.replace('-', ' ')}</p>
+                    <p className="text-xs text-gray-700 uppercase font-semibold mb-1">Type</p>
+                    <p className="text-sm font-medium capitalize text-gray-900">{selectedRecord.type.replace('-', ' ')}</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-xl">
-                    <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Status</p>
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(selectedRecord.status)}`}>
+                    <p className="text-xs text-gray-700 uppercase font-semibold mb-1">Status</p>
+                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(selectedRecord.status)} text-gray-900`}>
                       {selectedRecord.status}
                     </span>
                   </div>
                 </div>
-                
                 <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">
+                  <p className="text-xs text-gray-700 uppercase font-semibold mb-1">
                     {'user' in selectedRecord ? 'User' : 'Franchise'}
                   </p>
-                  <p className="text-sm font-medium">
+                  <p className="text-sm font-medium text-gray-900">
                     {'user' in selectedRecord ? selectedRecord.user : selectedRecord.franchise}
                   </p>
                 </div>
-                
                 <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">
+                  <p className="text-xs text-gray-700 uppercase font-semibold mb-1">
                     {'product' in selectedRecord && typeof selectedRecord.product === 'string' ? 'Product' : 'Equipment'}
                   </p>
-                  <p className="text-sm font-medium">
+                  <p className="text-sm font-medium text-gray-900">
                     {'product' in selectedRecord && typeof selectedRecord.product === 'string' ? selectedRecord.product : ('equipment' in selectedRecord && typeof selectedRecord.equipment === 'string' ? selectedRecord.equipment : '-')}
                   </p>
                 </div>
-                
                 <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Delivered On</p>
-                  <p className="text-sm font-medium">
+                  <p className="text-xs text-gray-700 uppercase font-semibold mb-1">Delivered On</p>
+                  <p className="text-sm font-medium text-gray-900">
                     {selectedRecord.deliveredOn ? new Date(selectedRecord.deliveredOn).toLocaleString() : '-'}
                   </p>
                 </div>
-                
                 <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-xs text-gray-500 uppercase font-semibold mb-1">Description</p>
-                  <p className="text-sm">{selectedRecord.description || 'No description provided'}</p>
+                  <p className="text-xs text-gray-700 uppercase font-semibold mb-1">Description</p>
+                  <p className="text-sm text-gray-900">{selectedRecord.description || 'No description provided'}</p>
                 </div>
               </div>
             </div>

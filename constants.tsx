@@ -1,26 +1,94 @@
+// Mock user for reference
+export const mock_user = {
+  id: 1,
+  name: 'John Doe',
+  email: 'john@example.com',
+  status: 'Accepted',
+  mobile: '9000000001',
+};
+
+// Mock order type
+export type MockOrder = {
+  
+  id: number;
+  userId: number;
+  customerName?: string;
+  mobile?: string;
+  date: string;
+  time: string;
+  paymentType: string;
+  paymentId: string;
+  accountNumber: string;
+  products: { id: number; count: number }[]; // Array of product objects with count
+  total: number;
+};
+
+// Mock orders array
+export const MOCK_ORDERS: MockOrder[] = [
+  {
+    id: 101,
+    userId: mock_user.id,
+    date: '2025-07-21',
+    time: '14:30',
+    paymentType: 'UPI',
+    paymentId: 'UPI123456',
+    accountNumber: '1234567890',
+    products: [
+      { id: 1, count: 1 }, // Healthy Salad Bowl
+      { id: 2, count: 2 } // Protein Smoothie
+    ],
+    mobile: mock_user.mobile,
+    total: 12.99 * 1 + 8.99 * 2,
+  },
+  {
+    id: 102,
+    userId: mock_user.id,
+    date: '2025-07-20',
+    time: '10:15',
+    paymentType: 'Card',
+    paymentId: 'CARD987654',
+    accountNumber: '0987654321',
+    products: [
+      { id: 3, count: 1 }, // Masala Chai
+      { id: 4, count: 1 }, // Organic Jam
+      { id: 5, count: 3 } // Nutri Snack Bar
+    ],
+    mobile: mock_user.mobile,
+    total: 4.5 * 1 + 6.75 * 1 + 2.99 * 3,
+  },
+];
 // Notification mock data for admin panel
 export const NOTIFICATIONS_MOCK_DATA = [
   {
-    id: 1,
-    type: 'registration',
-    title: 'New user registration',
-    message: 'John Doe has registered as a new user',
-    email: 'john.doe@example.com',
-    userName: 'John Doe',
-    timestamp: '5 minutes ago',
-    isRead: false,
-    color: 'blue'
+    id: 101,
+    userId: mock_user.id,
+    customerName: 'John Doe',
+    mobile: '9000000001',
+    date: '2025-07-21',
+    time: '14:30',
+    paymentType: 'UPI',
+    paymentId: 'UPI123456',
+    accountNumber: '1234567890',
+    products: [
+      { id: 1, count: 1 }, // Healthy Salad Bowl
+      { id: 2, count: 2 } // Protein Smoothie
+    ]
   },
   {
-    id: 2,
-    type: 'product',
-    title: 'Product added',
-    message: 'New healthy meal option added to catalog',
-    email: 'admin@foodapp.com',
-    userName: 'Admin User',
-    timestamp: '1 hour ago',
-    isRead: true,
-    color: 'green'
+    id: 102,
+    userId: mock_user.id,
+    customerName: 'John Doe',
+    mobile: '9000000001',
+    date: '2025-07-20',
+    time: '10:15',
+    paymentType: 'Card',
+    paymentId: 'CARD987654',
+    accountNumber: '0987654321',
+    products: [
+      { id: 3, count: 1 }, // Masala Chai
+      { id: 4, count: 1 }, // Organic Jam
+      { id: 5, count: 3 } // Nutri Snack Bar
+    ]
   },
   {
     id: 3,
@@ -218,6 +286,7 @@ export interface User {
   type: 'user' | 'franchise';
   joinDate: string;
   lastLogin: string;
+  mobile: string;
 }
 
 export interface UserDocument {
@@ -231,37 +300,37 @@ export interface UserWithDocs extends User {
 }
 
 export const MOCK_USERS: UserWithDocs[] = [
-  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'User', status: 'Active', type: 'user', joinDate: '2024-01-15', lastLogin: '2024-07-10', documents: [
+  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'User', status: 'Active', type: 'user', joinDate: '2024-01-15', lastLogin: '2024-07-10', mobile: '9000000001', documents: [
     { type: 'Aadhar Card', url: '/file.svg', verified: true },
     { type: 'PAN Card', url: '/file.svg', verified: false },
   ] },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Admin', status: 'Active', type: 'user', joinDate: '2023-11-20', lastLogin: '2024-07-14', documents: [
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Admin', status: 'Active', type: 'user', joinDate: '2023-11-20', lastLogin: '2024-07-14', mobile: '9000000002', documents: [
     { type: 'Aadhar Card', url: '/file.svg', verified: true },
   ] },
-  { id: 3, name: 'Franchise Owner', email: 'franchise1@example.com', role: 'Franchise', status: 'Pending', type: 'franchise', joinDate: '2024-06-01', lastLogin: '2024-07-05', documents: [
+  { id: 3, name: 'Franchise Owner', email: 'franchise1@example.com', role: 'Franchise', status: 'Pending', type: 'franchise', joinDate: '2024-06-01', lastLogin: '2024-07-05', mobile: '9000000003', documents: [
     { type: 'GST Certificate', url: '/file.svg', verified: false },
     { type: 'FSSAI License', url: '/file.svg', verified: true },
   ] },
-  { id: 4, name: 'Franchise Two', email: 'franchise2@example.com', role: 'Franchise', status: 'Blocked', type: 'franchise', joinDate: '2024-05-12', lastLogin: '2024-06-20', documents: [
+  { id: 4, name: 'Franchise Two', email: 'franchise2@example.com', role: 'Franchise', status: 'Blocked', type: 'franchise', joinDate: '2024-05-12', lastLogin: '2024-06-20', mobile: '9000000004', documents: [
     { type: 'GST Certificate', url: '/file.svg', verified: false },
   ] },
-  { id: 5, name: 'Alice Cooper', email: 'alice@example.com', role: 'User', status: 'Rejected', type: 'user', joinDate: '2024-03-08', lastLogin: '2024-07-01', documents: [
+  { id: 5, name: 'Alice Cooper', email: 'alice@example.com', role: 'User', status: 'Rejected', type: 'user', joinDate: '2024-03-08', lastLogin: '2024-07-01', mobile: '9000000005', documents: [
     { type: 'Aadhar Card', url: '/file.svg', verified: false },
   ] },
-  { id: 6, name: 'Bob Wilson', email: 'bob@example.com', role: 'Franchise', status: 'Active', type: 'franchise', joinDate: '2024-02-14', lastLogin: '2024-07-12', documents: [
+  { id: 6, name: 'Bob Wilson', email: 'bob@example.com', role: 'Franchise', status: 'Active', type: 'franchise', joinDate: '2024-02-14', lastLogin: '2024-07-12', mobile: '9000000006', documents: [
     { type: 'GST Certificate', url: '/file.svg', verified: true },
     { type: 'FSSAI License', url: '/file.svg', verified: true },
   ] },
-  { id: 7, name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'Active', type: 'user', joinDate: '2024-04-22', lastLogin: '2024-07-13', documents: [
+  { id: 7, name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'Active', type: 'user', joinDate: '2024-04-22', lastLogin: '2024-07-13', mobile: '9000000007', documents: [
     { type: 'Aadhar Card', url: '/file.svg', verified: true },
   ] },
-  { id: 8, name: 'Diana Prince', email: 'diana@example.com', role: 'Franchise', status: 'Pending', type: 'franchise', joinDate: '2024-06-28', lastLogin: '2024-07-08', documents: [
+  { id: 8, name: 'Diana Prince', email: 'diana@example.com', role: 'Franchise', status: 'Pending', type: 'franchise', joinDate: '2024-06-28', lastLogin: '2024-07-08', mobile: '9000000008', documents: [
     { type: 'GST Certificate', url: '/file.svg', verified: false },
   ] },
-  { id: 9, name: 'Eve Martinez', email: 'eve@example.com', role: 'User', status: 'Blocked', type: 'user', joinDate: '2024-01-30', lastLogin: '2024-06-15', documents: [
+  { id: 9, name: 'Eve Martinez', email: 'eve@example.com', role: 'User', status: 'Blocked', type: 'user', joinDate: '2024-01-30', lastLogin: '2024-06-15', mobile: '9000000009', documents: [
     { type: 'Aadhar Card', url: '/file.svg', verified: false },
   ] },
-  { id: 10, name: 'Frank Miller', email: 'frank@example.com', role: 'Franchise', status: 'Active', type: 'franchise', joinDate: '2024-03-18', lastLogin: '2024-07-11', documents: [
+  { id: 10, name: 'Frank Miller', email: 'frank@example.com', role: 'Franchise', status: 'Active', type: 'franchise', joinDate: '2024-03-18', lastLogin: '2024-07-11', mobile: '9000000010', documents: [
     { type: 'GST Certificate', url: '/file.svg', verified: true },
   ] },
 ];
